@@ -28,7 +28,13 @@ public class PersonenController {
         passagiere.add(pa1);
         passagiere.add(pa2);
         passagiere.add(pa3);
-        Personal
+        Personal pe1 = new Personal("Karl", "Kernig", 255);
+        Personal pe2 = new Personal("Paul", "Pringle", 256);
+        Personal pe3 = new Personal("Lola", "Lachs", 257);
+        personal.add(pe1);
+        personal.add(pe2);
+        personal.add(pe3);
+        Lokfuehrer lf = new Lokfuehrer("Til", "Tetris", 201, );
 
     }
 
