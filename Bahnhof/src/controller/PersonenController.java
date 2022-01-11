@@ -2,6 +2,11 @@ package controller;
 
 import model.*;
 import java.util.ArrayList;
+import java.util.Locale;
+import java.text.DateFormat;
+import java.text.SimpleDateFormat;
+import java.text.ParseException;
+
 
 public class PersonenController {
     
@@ -11,16 +16,20 @@ public class PersonenController {
     ArrayList<Passagier> passagiere;
     ArrayList<Personal> personal;
 
+    DateFormat format = new SimpleDateFormat("dd.MM.yyyy", Locale.GERMAN);
+
     public PersonenController(MainController mc){
         setMc(mc);
         personen = new ArrayList<Person>();
         lokfuehrer = new ArrayList<Lokfuehrer>();
         passagiere = new ArrayList<Passagier>();
         personal = new ArrayList<Personal>();
+
+        
     }
 
 
-    public void createDemoDaten(){
+    public void createDemoDaten() throws ParseException{
 
         Passagier pa1 = new Passagier("Bernd", "Barbar", 01);
         Passagier pa2 = new Passagier("Peter", "Klaus", 02); 
@@ -34,7 +43,22 @@ public class PersonenController {
         personal.add(pe1);
         personal.add(pe2);
         personal.add(pe3);
-        Lokfuehrer lf = new Lokfuehrer("Til", "Tetris", 201, );
+        Lokfuehrer lf1 = new Lokfuehrer("Til", "Tetris", 201, format.parse("31.10.2022"));
+        Lokfuehrer lf2 = new Lokfuehrer("Fred", "Fischbein", 202, format.parse("29.05.2022"));
+        Lokfuehrer lf3 = new Lokfuehrer("Manuel", "Meckern", 203, format.parse("28.03.2022"));
+        lokfuehrer.add(lf1);
+        lokfuehrer.add(lf2);
+        lokfuehrer.add(lf3);
+
+        personen.add(pa1);
+        personen.add(pa2);
+        personen.add(pa3);
+        personen.add(pe1);
+        personen.add(pe2);
+        personen.add(pe3);
+        personen.add(lf1);
+        personen.add(lf2);
+        personen.add(lf3);
 
     }
 
