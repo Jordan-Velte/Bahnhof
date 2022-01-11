@@ -5,6 +5,7 @@ import java.util.Date;
 public class TransportZug extends Zug{
     boolean langstreckenzulassung;
     String umweltbelastung;
+    //In KG
     double maxgesamtgewichtinkg;
 
     public TransportZug(String modell, String betreiber, double durchschnittsgeschwindigkeit, int wagonzahl, Date zulassungsdatum, boolean langstreckenzulassung, String umweltbelastung, double maxgesamtgewichtinkg){
