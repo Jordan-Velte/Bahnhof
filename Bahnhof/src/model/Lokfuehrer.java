@@ -7,7 +7,6 @@ public class Lokfuehrer extends Person{
     int lokfuehrernummer;
     Date fuehrerzulassung;
 
-
     public Lokfuehrer(String vorname, String nachname, int lokfuehrernummer, Date fuehrerzulassung){
         super(vorname, nachname);
         setFuehrerzulassung(fuehrerzulassung);

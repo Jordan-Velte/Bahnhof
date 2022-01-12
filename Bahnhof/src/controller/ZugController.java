@@ -62,6 +62,9 @@ public class ZugController {
     public void setMc(MainController mc) {
         this.mc = mc;
     }
+    public void setFormat(DateFormat format) {
+        this.format = format;
+    }
     public void setStandardPersonenzug(ArrayList<StandardPersonenZug> standardpersonenzug) {
         this.standardpersonenzug = standardpersonenzug;
     }
@@ -79,6 +82,9 @@ public class ZugController {
     }
     public MainController getMc() {
         return mc;
+    }
+    public DateFormat getFormat() {
+        return format;
     }
     public ArrayList<StandardPersonenZug> getStandardPersonenzug() {
         return standardpersonenzug;
