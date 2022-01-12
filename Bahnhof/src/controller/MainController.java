@@ -7,12 +7,17 @@ public class MainController {
     
     PersonenController pc;
     ZugController zc;
+    BahnhofsController bc;
+    GleisController gc;
     Output output;
 
     public MainController(){
         setOutput(new Output());
         setPc(new PersonenController(this));
         setZc(new ZugController(this));
+        setBc(new BahnhofsController(this));
+        setGc(new GleisController(this));
+        
 
         createDemoData();
         printDemoData();
@@ -28,7 +33,7 @@ public class MainController {
 
     }
 
-
+    // Setter und Getter
     public Output getOutput() {
         return output;
     }
@@ -52,4 +57,21 @@ public class MainController {
     public void setZc(ZugController zc) {
         this.zc = zc;
     }
+
+    public BahnhofsController getBc() {
+        return bc;
+    }
+
+    public void setBc(BahnhofsController bc) {
+        this.bc = bc;
+    }
+
+    public GleisController getGc() {
+        return gc;
+    }
+
+    public void setGc(GleisController gc) {
+        this.gc = gc;
+    }
+
 }
