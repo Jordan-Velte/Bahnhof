@@ -1,3 +1,4 @@
+//Jordan
 package controller;
 import model.*;
 import java.util.ArrayList;
@@ -32,24 +33,24 @@ public class ZugController {
         StandardPersonenZug spz2 = new StandardPersonenZug("Alstom Coradia Continental", "Deutsche Bahn", 160, 4, format.parse("01.12.2008"), 450);
         TransportZug tz1 = new TransportZug("Bombardier Traxx F140 AC1", "Deutsche Bahn Cargo", 150, 30, format.parse("01.01.2000"), true, "normal", 84000);
         TransportZug tz2 = new TransportZug("Bombardier Traxx P160 DE ME", "Deutsche Bahn Cargo", 160, 30, format.parse("13.12.2013"), true, "normal", 81000);
-        //Reinelektrischzüge werden noch implementiert --> Problem mit Model-Klasse!
-        //Reinelektrisch rz1: Siemens ACS-64, Amtrak, 200, 10, 7. Februar 2014, 4 Drehstrom-Asynchronmotoren, 30
-        //Reinelektrisch rz2: Bombardier ALP-46, New Jersey Transit, 200, 10, 1. Dezember 1999, 4 Drehstrom-Asynchronmotoren, 30
-        /*
-        String modell, String betreiber, double durchschnittsgeschwindigkeit, int wagonzahl, Date zulassungsdatum, String energieversorgung, double batterielebensdauerinjahren
-        */
+        ReinelektrischZug rz1 = new ReinelektrischZug("Siemens ACS-64", "Amtrak", 200, 10, format.parse("07.02.2014"), "4 Drehstrom-Asynchronmotoren", 30);
+        ReinelektrischZug rz2 = new ReinelektrischZug("Bombardier ALP-46", "New Jersey Transit", 200, 10, format.parse("01.12.1999"), "4 Drehstrom-Asynchronmotoren", 30);
         hochgeschwindigkeitszug.add(hz1);
         hochgeschwindigkeitszug.add(hz2);
         standardpersonenzug.add(spz1);
         standardpersonenzug.add(spz2);
         transportzug.add(tz1);
         transportzug.add(tz2);
+        reinelektrischzug.add(rz1);
+        reinelektrischzug.add(rz2);
         zug.add(hz1);
         zug.add(hz2);
         zug.add(spz1);
         zug.add(spz1);
         zug.add(tz1);
         zug.add(tz2);
+        zug.add(rz1);
+        zug.add(rz2);
 
        
     }
