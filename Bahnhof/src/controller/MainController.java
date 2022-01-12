@@ -7,7 +7,6 @@ public class MainController {
     
     PersonenController pc;
     ZugController zc;
-
     Output output;
 
 
