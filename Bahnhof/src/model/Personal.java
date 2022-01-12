@@ -1,5 +1,6 @@
 package model;
 
+// Lennard
 public class Personal extends Person{
     
     int personalnummer;

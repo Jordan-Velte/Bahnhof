@@ -1,5 +1,6 @@
 package model;
 
+// Lennard
 public class Passagier extends Person{
  
     int kundennummer;
