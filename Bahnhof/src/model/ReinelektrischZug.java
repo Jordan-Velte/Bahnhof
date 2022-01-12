@@ -1,3 +1,4 @@
+//Jordan
 package model;
 //Import für Datumwerte
 import java.util.Date;
@@ -6,7 +7,7 @@ public class ReinelektrischZug extends Zug{
     String energieversorgung;
     double batterielebensdauerinjahren;
 
-    ReinelektrischZug(String modell, String betreiber, double durchschnittsgeschwindigkeit, int wagonzahl, Date zulassungsdatum, String energieversorgung, double batterielebensdauerinjahren){
+    public ReinelektrischZug(String modell, String betreiber, double durchschnittsgeschwindigkeit, int wagonzahl, Date zulassungsdatum, String energieversorgung, double batterielebensdauerinjahren){
         super(modell, betreiber, durchschnittsgeschwindigkeit, wagonzahl, zulassungsdatum);
         setBatterielebensdauerinjahren(batterielebensdauerinjahren);
         setEnergieversorgung(energieversorgung);

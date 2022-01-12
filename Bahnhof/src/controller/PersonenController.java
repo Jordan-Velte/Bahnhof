@@ -63,10 +63,7 @@ public class PersonenController {
 
     }
 
-
-
     // Setter und Getter
-
     public MainController getMc() {
         return mc;
     }
