@@ -1,5 +1,7 @@
 package controller;
 
+import java.text.ParseException;
+
 import view.*;
 
 // Lennard, Jordan
@@ -13,29 +15,34 @@ public class MainController {
     GleisController gc;
     Output output;
 
-    public MainController(){
+    public MainController() throws ParseException{
         setOutput(new Output());
         setPc(new PersonenController(this));
         setZc(new ZugController(this));
         setBuc(new BuchungController(this));
         setZlc(new ZuglinieController(this));
-        setBc(new BuchungController(this));
+        setBc(new BahnhofsController(this));
         setGc(new GleisController(this));
-        
-
-        createDemoData();
-        printDemoData();
+    
+        createDemoDatenset();
+        //printDemoData();
     }
 
-    public void createDemoData(){
+    public void createDemoDatenset() throws ParseException{
         getPc().createDemoDaten();
         getZc().createDemoDaten();
+        getGc().createDemoDaten();
+        getBc().createDemoDaten();
+        getZlc().createDemoDaten();
+        getBuc().createDemoDaten();
+
     }
 
-
+    /*
     public void printDemoData(){
 
     }
+    */
 
     // Setter und Getter
     public Output getOutput() {

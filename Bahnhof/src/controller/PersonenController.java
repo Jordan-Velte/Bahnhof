@@ -25,8 +25,6 @@ public class PersonenController {
         lokfuehrer = new ArrayList<Lokfuehrer>();
         passagiere = new ArrayList<Passagier>();
         personal = new ArrayList<Personal>();
-
-        
     }
 
 
@@ -46,7 +44,7 @@ public class PersonenController {
         personal.add(pe3);
         Lokfuehrer lf1 = new Lokfuehrer("Til", "Tetris", 201, format.parse("31.10.1990"));
         Lokfuehrer lf2 = new Lokfuehrer("Fred", "Fischbein", 202, format.parse("29.05.1965"));
-        Lokfuehrer lf3 = new Lokfuehrer("Manuel", "Meckern", 203, format.parse("28.03.1972  "));
+        Lokfuehrer lf3 = new Lokfuehrer("Manuel", "Meckern", 203, format.parse("28.03.1972"));
         lokfuehrer.add(lf1);
         lokfuehrer.add(lf2);
         lokfuehrer.add(lf3);
@@ -83,7 +81,7 @@ public class PersonenController {
     public ArrayList<Lokfuehrer> getLokfuehrer() {
         return lokfuehrer;
     }
-
+    
     public void setLokfuehrer(ArrayList<Lokfuehrer> lokfuehrer) {
         this.lokfuehrer = lokfuehrer;
     }

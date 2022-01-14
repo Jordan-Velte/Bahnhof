@@ -5,6 +5,7 @@ import java.util.Locale;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.text.ParseException;
+
 public class BuchungController {
     MainController mc;
     ArrayList<Buchung> buchung = new ArrayList<Buchung>();
@@ -14,9 +15,11 @@ public class BuchungController {
         setBuchung(buchung);
         setMc(mc);
     }
-
     public void createDemoDaten() throws ParseException{
-        //Muss noch!
+        Buchung b1 = new Buchung(1, getMc().getZlc().getZuglinie().get(0), getMc().getPc().getPassagiere().get(0), 68.9, format.parse("1.1.2022"));
+        Buchung b2 = new Buchung(2, getMc().getZlc().getZuglinie().get(1), getMc().getPc().getPassagiere().get(1), 100.9, format.parse("8.1.2022"));
+        buchung.add(b1);
+        buchung.add(b2);
     }
 
     public void setBuchung(ArrayList<Buchung> buchung) {

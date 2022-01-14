@@ -9,13 +9,12 @@ public class GleisController {
     ArrayList<Gleis> gleise;
     
 
-    public GleisController(){
+    public GleisController(MainController mc){
         setMc(mc);
         gleise = new ArrayList<Gleis>();
     }
 
     public void createDemoDaten(){
-
 
         Gleis g1 = new Gleis("Gleis 1", true);
         Gleis g2 = new Gleis("Gleis 2", true);

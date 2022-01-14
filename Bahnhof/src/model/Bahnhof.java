@@ -1,13 +1,15 @@
 package model;
+import java.util.ArrayList;
 
 // Lennard
 public class Bahnhof {
 
     String name;
     String standort;
-    Gleis gleis;
+    ArrayList<Gleis> gleiskombination = new ArrayList<Gleis>();
+    
 
-    public Bahnhof(String name, String standort, Gleis gleis){
+    public Bahnhof(String name, String standort, ArrayList<Gleis> gleiskombination){
         setName(name);
         setStandort(standort);
     }
@@ -29,12 +31,12 @@ public class Bahnhof {
         this.standort = standort;
     }
 
-    public Gleis getGleis() {
-        return gleis;
+    public void setGleiskombination(ArrayList<Gleis> gleiskombination) {
+        this.gleiskombination = gleiskombination;
     }
-
-    public void setGleis(Gleis gleis) {
-        this.gleis = gleis;
+    public ArrayList<Gleis> getGleiskombination() {
+        return gleiskombination;
     }
+    
 
 }
