@@ -6,6 +6,7 @@ import java.util.Locale;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.text.ParseException;
+
 public class ZuglinieController {
     MainController mc;
     ArrayList<Zuglinie> zuglinie = new ArrayList<Zuglinie>();
@@ -14,6 +15,12 @@ public class ZuglinieController {
     public ZuglinieController(MainController mc){
         setMc(mc);
         setZuglinie(zuglinie);
+    }
+
+    public void checkLokfuehrerQualifikation(){
+        for(Zuglinie zuglinie : zuglinie){
+            if(zuglinie.getLokfuehrer().getFuehrerzulassung() == "hochgesch")
+        }
     }
 
     public void createDemoDaten() throws ParseException{
