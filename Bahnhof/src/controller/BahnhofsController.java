@@ -16,6 +16,7 @@ public class BahnhofsController {
     }
 
     public void createDemoDaten(){
+        // Demodaten für verschiedene Gleismengen in Bahnhöfen
         ArrayList<Gleis> gleis_1 = new ArrayList<Gleis>();
         gleis_1.add(getMc().getGc().getGleise().get(0));
             

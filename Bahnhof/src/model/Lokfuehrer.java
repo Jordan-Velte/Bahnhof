@@ -1,5 +1,6 @@
 package model;
 
+// Lennard
 import java.util.Date;
 
 public class Lokfuehrer extends Person{

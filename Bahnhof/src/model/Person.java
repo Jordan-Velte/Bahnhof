@@ -1,5 +1,6 @@
 package model;
 
+// Lennard
 public abstract class Person {
     
     String vorname;

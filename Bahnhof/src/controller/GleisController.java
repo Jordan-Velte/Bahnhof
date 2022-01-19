@@ -3,6 +3,7 @@ package controller;
 import model.*;
 import java.util.ArrayList;
 
+// Lennard
 public class GleisController {
     
     MainController mc;
@@ -15,7 +16,7 @@ public class GleisController {
     }
 
     public void createDemoDaten(){
-
+        // Demodaten für die verschiedenen Gleise
         Gleis g1 = new Gleis("Gleis 1", true);
         Gleis g2 = new Gleis("Gleis 2", true);
         Gleis g3 = new Gleis("Gleis 3", true);
