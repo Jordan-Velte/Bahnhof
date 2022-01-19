@@ -14,7 +14,6 @@ public class Lokfuehrer extends Person{
     }
 
     // Setter und Getter
-
     public Date getFuehrerzulassung() {
         return fuehrerzulassung;
     }
