@@ -16,12 +16,14 @@ public class ZuglinieController {
         setMc(mc);
         setZuglinie(zuglinie);
     }
-
+    
+    /*
     public void checkLokfuehrerQualifikation(){
         for(Zuglinie zuglinie : zuglinie){
             if(zuglinie.getLokfuehrer().getFuehrerzulassung() == "hochgesch")
         }
     }
+    */
 
     public void createDemoDaten() throws ParseException{
         //Zuglinie 1 Hamburg Berlin

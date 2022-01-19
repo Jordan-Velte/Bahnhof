@@ -23,6 +23,8 @@ public class BuchungController {
         buchung.add(b2);
     }
 
+    
+
     public void setBuchung(ArrayList<Buchung> buchung) {
         this.buchung = buchung;
     }

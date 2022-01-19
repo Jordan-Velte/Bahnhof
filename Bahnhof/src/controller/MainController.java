@@ -23,8 +23,6 @@ public class MainController {
         setZlc(new ZuglinieController(this));
         setBc(new BahnhofsController(this));
         setGc(new GleisController(this));
-    
-        createDemoDatenset();
         //printDemoData();
     }
 
