@@ -6,9 +6,11 @@ import java.util.Locale;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.text.ParseException;
+import view.*;
 
 public class ZuglinieController {
     MainController mc;
+    Output o = new Output();
     ArrayList<Zuglinie> zuglinie = new ArrayList<Zuglinie>();
     DateFormat format = new SimpleDateFormat("dd.MM.yyyy", Locale.GERMAN);
 
@@ -16,14 +18,7 @@ public class ZuglinieController {
         setMc(mc);
         setZuglinie(zuglinie);
     }
-    
-    /*
-    public void checkLokfuehrerQualifikation(){
-        for(Zuglinie zuglinie : zuglinie){
-            if(zuglinie.getLokfuehrer().getFuehrerzulassung() == "hochgesch")
-        }
-    }
-    */
+
 
     public void createDemoDaten() throws ParseException{
         //Zuglinie 1 Hamburg Berlin
@@ -52,6 +47,64 @@ public class ZuglinieController {
         zuglinie.add(z2);
     }
 
+    public void checkLokfuehrerQualifikationReinelektrisch(){
+        for(Zuglinie zuglinie : zuglinie){
+            if((!zuglinie.getLokfuehrer().getQualifikation().contains("reinelektrisch")) && zuglinie.getZug().getClass().getName() == "model.ReinelektrischZug"){
+                o.printData("Der Lokführer " + zuglinie.getLokfuehrer().getVorname() + " " + zuglinie.getLokfuehrer().getNachname() + " ist nicht qualifiziert, den reinelektrischen Zug " + zuglinie.getZug().getBetreiber() + " " + zuglinie.getZug().getModell() + " zu führen.");
+            }
+            else if((zuglinie.getLokfuehrer().getQualifikation().contains("reinelektrisch")) && zuglinie.getZug().getClass().getName() == "model.ReinelektrischZug"){
+                o.printData("Der Lokführer " + zuglinie.getLokfuehrer().getVorname() + " " + zuglinie.getLokfuehrer().getNachname() + " ist qualifiziert, den reinelektrischen Zug " + zuglinie.getZug().getBetreiber() + " " + zuglinie.getZug().getModell() + " zu führen.");
+            }
+            else{
+                break;
+            }
+        }
+    }
+
+    public void checkLokfuehrerQualifikationStandardPerson(){
+        for(Zuglinie zuglinie : zuglinie){
+            if((!zuglinie.getLokfuehrer().getQualifikation().contains("standardperson")) && zuglinie.getZug().getClass().getName() == "model.StandardPersonenZug"){
+                o.printData("Der Lokführer " + zuglinie.getLokfuehrer().getVorname() + " " + zuglinie.getLokfuehrer().getNachname() + " ist nicht qualifiziert, den Personenzug " + zuglinie.getZug().getBetreiber() + " " + zuglinie.getZug().getModell() + " zu führen.");
+            }
+            else if((zuglinie.getLokfuehrer().getQualifikation().contains("standardperson")) && zuglinie.getZug().getClass().getName() == "model.StandardPersonenZug"){
+                o.printData("Der Lokführer " + zuglinie.getLokfuehrer().getVorname() + " " + zuglinie.getLokfuehrer().getNachname() + " ist qualifiziert, den Personenzug " + zuglinie.getZug().getBetreiber() + " " + zuglinie.getZug().getModell() + " zu führen.");
+            }
+            else{
+                break;
+            }
+        }
+    }
+
+    public void checkLokfuehrerQualifikationHochgeschwindigkeit(){
+        for(Zuglinie zuglinie : zuglinie){
+            if((!zuglinie.getLokfuehrer().getQualifikation().contains("hochgeschwindigkeit")) && zuglinie.getZug().getClass().getName() == "model.HochgeschwindigkeitsZug"){
+                o.printData("Der Lokführer " + zuglinie.getLokfuehrer().getVorname() + " " + zuglinie.getLokfuehrer().getNachname() + " ist nicht qualifiziert, den Hochgeschwindigkeitszug " + zuglinie.getZug().getBetreiber() + " " + zuglinie.getZug().getModell() + " zu führen.");
+            }
+            else if((zuglinie.getLokfuehrer().getQualifikation().contains("hochgeschwindigkeit")) && zuglinie.getZug().getClass().getName() == "model.HochgeschwindigkeitsZug"){
+                o.printData("Der Lokführer " + zuglinie.getLokfuehrer().getVorname() + " " + zuglinie.getLokfuehrer().getNachname() + " ist qualifiziert, den Hochgeschwindigkeitszug " + zuglinie.getZug().getBetreiber() + " " + zuglinie.getZug().getModell() + " zu führen.");
+            }
+            else{
+                break;
+            }
+        }
+    }
+
+    public void checkLokfuehrerQualifikationTransport(){
+        for(Zuglinie zuglinie : zuglinie){
+            if((!zuglinie.getLokfuehrer().getQualifikation().contains("transport")) && zuglinie.getZug().getClass().getName() == "model.TransportZug"){
+                o.printData("Der Lokführer " + zuglinie.getLokfuehrer().getVorname() + " " + zuglinie.getLokfuehrer().getNachname() + " ist nicht qualifiziert, den Transportzug " + zuglinie.getZug().getBetreiber() + " " + zuglinie.getZug().getModell() + " zu führen.");
+            }
+            else if((zuglinie.getLokfuehrer().getQualifikation().contains("transport")) && zuglinie.getZug().getClass().getName() == "model.TransportZug"){
+                o.printData("Der Lokführer " + zuglinie.getLokfuehrer().getVorname() + " " + zuglinie.getLokfuehrer().getNachname() + " ist qualifiziert, den Transportzug " + zuglinie.getZug().getBetreiber() + " " + zuglinie.getZug().getModell() + " zu führen.");
+            }
+            else{
+                break;
+            }
+        }
+    }
+
+
+
     //Setter & Getter
     public void setMc(MainController mc) {
         this.mc = mc;
@@ -74,3 +127,27 @@ public class ZuglinieController {
 
     
 }
+
+    //Lehrerqualifikation prüfen
+    //Optionen: reinelektrisch, standardperson, hochgeschwindigkeit, transport
+    /*
+    public void checkLokfuehrerQualifikation(){
+        for(Zuglinie zuglinie : zuglinie){
+            if((zuglinie.getLokfuehrer().getQualifikation().contains("reinelektrisch")) && zuglinie.getZug().getClass().getName() == "model.ReinelektrischZug"){
+                o.printData("Der Lokführer " + zuglinie.getLokfuehrer().getVorname() + " " + zuglinie.getLokfuehrer().getNachname() + " ist qualifiziert, den reinelektrischen Zug " + zuglinie.getZug().getBetreiber() + " " + zuglinie.getZug().getModell() + " zu führen.");
+            }
+            else if((zuglinie.getLokfuehrer().getQualifikation().contains("standardperson")) && zuglinie.getZug().getClass().getName() == "model.StandardPersonenZug"){
+                o.printData("Der Lokführer " + zuglinie.getLokfuehrer().getVorname() + " " + zuglinie.getLokfuehrer().getNachname() + " ist qualifiziert, den Personenzug " + zuglinie.getZug().getBetreiber() + " " + zuglinie.getZug().getModell() + " zu führen."); 
+            }
+            else if((zuglinie.getLokfuehrer().getQualifikation().contains("hochgeschwindigkeit")) && zuglinie.getZug().getClass().getName() == "model.HochgeschwindigkeitsZug"){
+                o.printData("Der Lokführer " + zuglinie.getLokfuehrer().getVorname() + " " + zuglinie.getLokfuehrer().getNachname() + " ist qualifiziert, den Hochgeschwindigkeitszug " + zuglinie.getZug().getBetreiber() + " " + zuglinie.getZug().getModell() + " zu führen.");
+            }
+            else if((zuglinie.getLokfuehrer().getQualifikation().contains("transport")) && zuglinie.getZug().getClass().getName() == "model.TransportZug"){
+                o.printData("Der Lokführer " + zuglinie.getLokfuehrer().getVorname() + " " + zuglinie.getLokfuehrer().getNachname() + " ist qualifiziert, den Transportzug " + zuglinie.getZug().getBetreiber() + " " + zuglinie.getZug().getModell() + " zu führen.");
+            }
+            else{
+                o.printData("Der Lokführer " + zuglinie.getLokfuehrer().getVorname() + " " + zuglinie.getLokfuehrer().getNachname() + " ist nicht qualifiziert den Zug " + zuglinie.getZug().getBetreiber() + " " + zuglinie.getZug().getModell() + " zu führen."); 
+            }
+        }
+    }
+    */

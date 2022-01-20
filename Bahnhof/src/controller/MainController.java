@@ -36,6 +36,13 @@ public class MainController {
 
     }
 
+    public void checkLokfuehrerQualifikation(){
+        getZlc().checkLokfuehrerQualifikationReinelektrisch();
+        getZlc().checkLokfuehrerQualifikationStandardPerson();
+        getZlc().checkLokfuehrerQualifikationHochgeschwindigkeit();
+        getZlc().checkLokfuehrerQualifikationTransport();
+    }
+
     /*
     public void printDemoData(){
 

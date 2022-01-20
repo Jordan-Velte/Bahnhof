@@ -44,18 +44,20 @@ public class PersonenController {
         personal.add(pe3);
 
         //Lokführer Qualifikation
+        //Optionen: reinelektrisch, standardperson, hochgeschwindigkeit, transport
         ArrayList<String> lokfuehrerqualifikation1 = new ArrayList<String>();
         lokfuehrerqualifikation1.add("reinelektrisch");
-        lokfuehrerqualifikation1.add("standardpersonzug");
+        lokfuehrerqualifikation1.add("standardperson");
         lokfuehrerqualifikation1.add("hochgeschwindigkeit");
         Lokfuehrer lf1 = new Lokfuehrer("Til", "Tetris", 201, lokfuehrerqualifikation1, format.parse("31.10.1990"));
         ArrayList<String> lokfuehrerqualifikation2 = new ArrayList<String>();
-        lokfuehrerqualifikation2.add("standardpersonzug");
+        lokfuehrerqualifikation2.add("standardperson");
         Lokfuehrer lf2 = new Lokfuehrer("Fred", "Fischbein", 202, lokfuehrerqualifikation2, format.parse("29.05.1965"));
         ArrayList<String> lokfuehrerqualifikation3 = new ArrayList<String>();
-        lokfuehrerqualifikation3.add("standardpersonzug");
+        lokfuehrerqualifikation3.add("standardperson");
         lokfuehrerqualifikation3.add("hochgeschwindigkeit");
-        Lokfuehrer lf3 = new Lokfuehrer("Manuel", "Meckern", 203, lokfuehrerqualifikation3,format.parse("28.03.1972"));
+        Lokfuehrer lf3 = new Lokfuehrer("Manuel", "Meckern", 203, lokfuehrerqualifikation3, format.parse("28.03.1972"));
+        
         lokfuehrer.add(lf1);
         lokfuehrer.add(lf2);
         lokfuehrer.add(lf3);

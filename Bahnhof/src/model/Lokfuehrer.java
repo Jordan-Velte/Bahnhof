@@ -7,12 +7,12 @@ import java.util.Date;
 public class Lokfuehrer extends Person{
  
     int lokfuehrernummer;
-    ArrayList<String> qualifikation;
+    ArrayList<String> qualifikation = new ArrayList<String>();
     Date fuehrerzulassung;
 
     public Lokfuehrer(String vorname, String nachname, int lokfuehrernummer, ArrayList<String> qualifikation, Date fuehrerzulassung){
         super(vorname, nachname);
-        qualifikation = new ArrayList<String>();
+        setQualifikation(qualifikation);
         setFuehrerzulassung(fuehrerzulassung);
         setLokfuehrernummer(lokfuehrernummer);
     }
