@@ -14,6 +14,7 @@ public class MainController {
     BahnhofsController bc;
     GleisController gc;
     Output output;
+    Menu menu;
 
     public MainController() throws ParseException{
         setOutput(new Output());
@@ -23,7 +24,7 @@ public class MainController {
         setZlc(new ZuglinieController(this));
         setBc(new BahnhofsController(this));
         setGc(new GleisController(this));
-        //printDemoData();
+        setMenu(new Menu(this));
     }
 
     public void createDemoDatenset() throws ParseException{
@@ -36,16 +37,17 @@ public class MainController {
 
     }
 
+    public void createMenu(){
+        getMenu().startMenu();
+    }
+
+    //Kommt noch in Menü!
+    /*
     public void checkLokfuehrerQualifikation(){
         getZlc().checkLokfuehrerQualifikationReinelektrisch();
         getZlc().checkLokfuehrerQualifikationStandardPerson();
         getZlc().checkLokfuehrerQualifikationHochgeschwindigkeit();
         getZlc().checkLokfuehrerQualifikationTransport();
-    }
-
-    /*
-    public void printDemoData(){
-
     }
     */
 
@@ -92,5 +94,12 @@ public class MainController {
     public GleisController getGc() {
         return gc;
     }
+    public void setMenu(Menu menu) {
+        this.menu = menu;
+    }
+    public Menu getMenu() {
+        return menu;
+    }
+
 
 }

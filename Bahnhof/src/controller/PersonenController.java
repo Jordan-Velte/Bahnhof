@@ -1,12 +1,14 @@
 package controller;
 
 import model.*;
+import view.Output;
+
 import java.util.ArrayList;
 import java.util.Locale;
+
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.text.ParseException;
-
 //Lennard
 
 public class PersonenController {
@@ -16,6 +18,7 @@ public class PersonenController {
     ArrayList<Lokfuehrer> lokfuehrer;
     ArrayList<Passagier> passagiere;
     ArrayList<Personal> personal;
+    Output o = new Output();
 
     DateFormat format = new SimpleDateFormat("dd.MM.yyyy", Locale.GERMAN);
 
@@ -72,6 +75,46 @@ public class PersonenController {
         personen.add(lf2);
         personen.add(lf3);
 
+    }
+
+    //Jordan
+    //Personen printOut
+    public void printOutPersonen(){
+        for(Person person : personen){
+            if(person!=null){
+                o.printData(person.getVorname() + " " + person.getNachname());
+            }
+            else{
+                break;
+            }
+        }
+    }
+    
+    public void printOutLokfuehrer(){
+        for(Lokfuehrer lokfuehrer : lokfuehrer){
+            if(lokfuehrer!=null){
+                o.printData(lokfuehrer.getVorname() + " " + lokfuehrer.getNachname());
+            }
+            else{
+                break;
+            }
+        }
+    }
+    
+    public void printOutPassagiere(){
+        for(Passagier passagier : passagiere){
+            if(passagier!=null){
+                o.printData(passagier.getVorname() + " " + passagier.getNachname());
+            }
+        }
+    }
+
+    public void printOutPersonal(){
+        for(Personal personal : personal){
+            if(personal!=null){
+                o.printData(personal.getVorname() + " " + personal.getNachname());
+            }
+        }
     }
 
     // Setter und Getter

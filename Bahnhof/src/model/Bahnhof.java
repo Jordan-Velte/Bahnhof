@@ -12,6 +12,7 @@ public class Bahnhof {
     public Bahnhof(String name, String standort, ArrayList<Gleis> gleiskombination){
         setName(name);
         setStandort(standort);
+        setGleiskombination(gleiskombination);
     }
 
     // Setter und Getter

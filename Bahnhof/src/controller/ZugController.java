@@ -7,6 +7,7 @@ import java.util.Locale;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
+import view.*;
 
 public class ZugController {
     MainController mc;
@@ -17,6 +18,7 @@ public class ZugController {
     ArrayList<StandardPersonenZug> standardpersonenzug;
     //Formatfestlegung für die Datumsvariablen. Das Datum orientiert sich an dem deutschen Standard --> Per Punktnotation an jener Instanz können nun über die parse-Methode Strings übergeben werden, welche sich an diesem definierten Datumsformat orientieren.
     DateFormat format = new SimpleDateFormat("dd.MM.yyyy", Locale.GERMAN);
+    Output o = new Output();
 
     public ZugController(MainController mc){
         zug = new ArrayList<Zug>();
@@ -54,7 +56,7 @@ public class ZugController {
 
        
     }
-
+    
     //Setter & Getter
     public void setHochgeschwindigkeitszug(ArrayList<HochgeschwindigkeitsZug> hochgeschwindigkeitszug) {
         this.hochgeschwindigkeitszug = hochgeschwindigkeitszug;
