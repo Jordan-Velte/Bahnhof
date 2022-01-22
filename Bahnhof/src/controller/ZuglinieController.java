@@ -43,8 +43,18 @@ public class ZuglinieController {
         bahnhofkombination2.add(getMc().getBc().getBahnhoefe().get(0));
         //Frankfurt
         bahnhofkombination2.add(getMc().getBc().getBahnhoefe().get(2));
+        bahnhofkombination2.add(getMc().getBc().getBahnhoefe().get(3));
         Zuglinie z2 = new Zuglinie(1, getMc().getZc().getHochgeschwindigkeitszug().get(1), getMc().getPc().getLokfuehrer().get(1), personalkombination1, bahnhofkombination2, format.parse("13.02.2022"));
         zuglinie.add(z2);
+    }
+
+    //PrintoutZuglinien
+    public void printOutZuglinie(){
+        for(Zuglinie zuglinie : zuglinie){
+            if(zuglinie!=null){
+                o.printData("Zugliniennummer: " + zuglinie.getZugliniennummer() + "; Zug: " + zuglinie.getZug().getBetreiber() + " " + zuglinie.getZug().getModell() + "; Abfahrt: " + zuglinie.getBahnhof().get(0).getName()+ "; Ankunft: " + zuglinie.getBahnhof().get(zuglinie.getBahnhof().size()-1).getName() + "; Datum: "  + zuglinie.getFahrtDatum());
+            }
+        }
     }
 
     public void checkLokfuehrerQualifikationReinelektrisch(){

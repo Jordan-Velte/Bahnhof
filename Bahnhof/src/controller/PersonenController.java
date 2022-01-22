@@ -84,9 +84,6 @@ public class PersonenController {
             if(person!=null){
                 o.printData(person.getVorname() + " " + person.getNachname());
             }
-            else{
-                break;
-            }
         }
     }
     
@@ -94,9 +91,6 @@ public class PersonenController {
         for(Lokfuehrer lokfuehrer : lokfuehrer){
             if(lokfuehrer!=null){
                 o.printData(lokfuehrer.getVorname() + " " + lokfuehrer.getNachname());
-            }
-            else{
-                break;
             }
         }
     }

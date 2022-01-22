@@ -7,8 +7,8 @@ public class HochgeschwindigkeitsZug extends Zug{
     //In Euro
     double entwicklungskosten;
 
-    public HochgeschwindigkeitsZug(String modell, String betreiber, double durchschnittsgeschwindigkeit, int wagonzahl, Date zulassungsdatum, double entwicklungskosten){
-        super(modell, betreiber, durchschnittsgeschwindigkeit, wagonzahl, zulassungsdatum);
+    public HochgeschwindigkeitsZug(String modell, String betreiber, double durchschnittsgeschwindigkeit, int wagonanzahl, Date zulassungsdatum, double entwicklungskosten){
+        super(modell, betreiber, durchschnittsgeschwindigkeit, wagonanzahl, zulassungsdatum);
         setEntwicklungskosten(entwicklungskosten);
     }
 

@@ -53,16 +53,16 @@ public class BahnhofsController {
     public void printOutBahnhof(){
         for(Bahnhof bahnhof : bahnhoefe){
             if(bahnhof != null && bahnhof.getGleiskombination().size() == 1){
-                o.printData(bahnhof.getName() + " - Standort: " + bahnhof.getStandort() + " Gleise: " + bahnhof.getGleiskombination().get(0).getName());
+                o.printData(bahnhof.getName() + " - Standort: " + bahnhof.getStandort() + "; Gleise: " + bahnhof.getGleiskombination().get(0).getName());
             }
             else if((bahnhof != null) && bahnhof.getGleiskombination().size() == 2){
-                o.printData(bahnhof.getName() + " - Standort: " + bahnhof.getStandort() + " Gleise: " + bahnhof.getGleiskombination().get(0).getName() + ", " + bahnhof.getGleiskombination().get(1).getName());
+                o.printData(bahnhof.getName() + " - Standort: " + bahnhof.getStandort() + "; Gleise: " + bahnhof.getGleiskombination().get(0).getName() + ", " + bahnhof.getGleiskombination().get(1).getName());
             }
             else if((bahnhof != null) && bahnhof.getGleiskombination().size() == 3){
-                o.printData(bahnhof.getName() + " - Standort: " + bahnhof.getStandort() + " Gleise: " + bahnhof.getGleiskombination().get(0).getName() + ", " + bahnhof.getGleiskombination().get(0).getName() + ", " + bahnhof.getGleiskombination().get(2).getName());
+                o.printData(bahnhof.getName() + " - Standort: " + bahnhof.getStandort() + "; Gleise: " + bahnhof.getGleiskombination().get(0).getName() + ", " + bahnhof.getGleiskombination().get(0).getName() + ", " + bahnhof.getGleiskombination().get(2).getName());
             }
             else if((bahnhof != null) && bahnhof.getGleiskombination().size() == 4){
-                o.printData(bahnhof.getName() + " - Standort: " + bahnhof.getStandort() + " Gleise: " + bahnhof.getGleiskombination().get(0).getName() + ", " + bahnhof.getGleiskombination().get(0).getName() + ", " + bahnhof.getGleiskombination().get(2).getName() + ", " + bahnhof.getGleiskombination().get(3).getName());
+                o.printData(bahnhof.getName() + " - Standort: " + bahnhof.getStandort() + "; Gleise: " + bahnhof.getGleiskombination().get(0).getName() + ", " + bahnhof.getGleiskombination().get(0).getName() + ", " + bahnhof.getGleiskombination().get(2).getName() + ", " + bahnhof.getGleiskombination().get(3).getName());
             }
         }
     }

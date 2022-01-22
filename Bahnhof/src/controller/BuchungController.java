@@ -31,9 +31,6 @@ public class BuchungController {
             if(buchung!=null){
                 o.printData("Buchungsnummer: " + buchung.getBuchungsnummer() + "; Abfahrt: " + buchung.getZuglinie().getBahnhof().get(0).getName() + "; Ankunft: " + buchung.getZuglinie().getBahnhof().get(buchung.getZuglinie().getBahnhof().size()-1).getName() + "; Passagier: " + buchung.getPassagier().getVorname() + " " + buchung.getPassagier().getNachname() + "; Preis: " + buchung.getPreis() +"EUR; Buchungsdatum: " + buchung.getBuchungsdatum());
             }
-            else{
-                break;
-            }
         }
     }
 

@@ -10,9 +10,10 @@ public abstract class Zug {
     int wagonanzahl;
     Date zulassungsdatum;
 
-    public Zug(String modell, String betreiber, double durchschnittsgeschwindigkeit, int wagonzahl, Date zulassungsdatum){
+    public Zug(String modell, String betreiber, double durchschnittsgeschwindigkeit, int wagonanzahl, Date zulassungsdatum){
         setBetreiber(betreiber);
         setModell(modell);
+        setDurchschnittsgeschwindigkeit(durchschnittsgeschwindigkeit);
         setWagonanzahl(wagonanzahl);
         setZulassungsdatum(zulassungsdatum);
     }

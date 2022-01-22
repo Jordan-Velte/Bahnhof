@@ -9,8 +9,8 @@ public class TransportZug extends Zug{
     //In KG
     double maxgesamtgewichtinkg;
 
-    public TransportZug(String modell, String betreiber, double durchschnittsgeschwindigkeit, int wagonzahl, Date zulassungsdatum, boolean langstreckenzulassung, String umweltbelastung, double maxgesamtgewichtinkg){
-        super(modell, betreiber, durchschnittsgeschwindigkeit, wagonzahl, zulassungsdatum);
+    public TransportZug(String modell, String betreiber, double durchschnittsgeschwindigkeit, int wagonanzahl, Date zulassungsdatum, boolean langstreckenzulassung, String umweltbelastung, double maxgesamtgewichtinkg){
+        super(modell, betreiber, durchschnittsgeschwindigkeit, wagonanzahl, zulassungsdatum);
         setLangstreckenzulassung(langstreckenzulassung);
         setMaxgesamtgewichtinkg(maxgesamtgewichtinkg);
         setUmweltbelastung(umweltbelastung);
@@ -24,6 +24,9 @@ public class TransportZug extends Zug{
     }
     public void setUmweltbelastung(String umweltbelastung) {
         this.umweltbelastung = umweltbelastung;
+    }
+    public boolean getLangstreckenzulassung(){
+        return langstreckenzulassung;
     }
     public double getMaxgesamtgewichtinkg() {
         return maxgesamtgewichtinkg;
