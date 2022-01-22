@@ -43,7 +43,7 @@ public class ZuglinieController {
         bahnhofkombination2.add(getMc().getBc().getBahnhoefe().get(0));
         //Frankfurt
         bahnhofkombination2.add(getMc().getBc().getBahnhoefe().get(2));
-        Zuglinie z2 = new Zuglinie(1, getMc().getZc().getHochgeschwindigkeitszug().get(1), getMc().getPc().getLokfuehrer().get(1), personalkombination1, bahnhofkombination1, format.parse("13.02.2022"));
+        Zuglinie z2 = new Zuglinie(1, getMc().getZc().getHochgeschwindigkeitszug().get(1), getMc().getPc().getLokfuehrer().get(1), personalkombination1, bahnhofkombination2, format.parse("13.02.2022"));
         zuglinie.add(z2);
     }
 
