@@ -15,7 +15,6 @@ public class Menu {
 
     //Menu-Methode
     public void startMenu(){
-        System.out.println(getMc().getZc().getReinelektrischzug().get(0).getWagonanzahl());
         o.printData("(1) Dateneingabe");
         o.printData("(2) Datenausgabe");
         String initchoice = getScanner().nextLine();
