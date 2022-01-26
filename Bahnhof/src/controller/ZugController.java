@@ -137,6 +137,7 @@ public class ZugController {
         ReinelektrischZug newreinelektrischzug = new ReinelektrischZug(reinelektrischmodell, reinelektrischbetreiber, reinelektrischdurchschnittsgeschwindigkeit, reinelektrischwagonzahl, reinelektrischzulassungdatum, reinelektrischenergieversorgung, reinelektrischbatterielebensdauer);
         reinelektrischzug.add(newreinelektrischzug);
         zug.add(newreinelektrischzug);
+        o.printData("Reinelektrischer Zug wurde erstellt!");
     }
 
     public void createHochgeschwindigkeitsZuege() throws ParseException{
@@ -160,7 +161,63 @@ public class ZugController {
         HochgeschwindigkeitsZug newhochgeschwindigkeitzug = new HochgeschwindigkeitsZug(hochgeschwindigkeitmodell, hochgeschwindigkeitbetreiber, hochgeschwindigkeithdurchschnittsgeschwindigkeit, hochgeschwindigkeitwagonzahl, hochgeschwindigkeitzulassungdatum, hochgeschwindigkeitentwicklungskosten);
         hochgeschwindigkeitszug.add(newhochgeschwindigkeitzug);
         zug.add(newhochgeschwindigkeitzug);
+        o.printData("Hochgeschwindigkeitszug wurde erstellt!");
     }
+
+    public void createStandardpersonenZuege() throws ParseException{
+        o.printData("Standardpersonenzug erstellen: ");
+        o.printData("Modell: ");
+        String standardpersonmodell = getScanner().nextLine();
+        o.printData("Betreiber: ");
+        String standardpersonbetreiber = getScanner().nextLine();
+        o.printData("Durchschnittliche Kilometer in km/h: ");
+        String standardpersondurchschnittsgeschwindigkeit_string = getScanner().nextLine();
+        double standardpersondurchschnittsgeschwindigkeit = Double.parseDouble(standardpersondurchschnittsgeschwindigkeit_string);
+        o.printData("Wagonzahl: ");
+        String standardpersonwagonzahl_string = getScanner().nextLine();
+        int standardpersonwagonzahl = Integer.parseInt(standardpersonwagonzahl_string);
+        o.printData("Zulassungsdatum: ");
+        String standardpersonzulassungsdatum_string = getScanner().nextLine();
+        Date standardpersonzulassungdatum = format.parse(standardpersonzulassungsdatum_string);
+        o.printData("Maximale Personenladung: ");
+        String standardpersonmaxpersonenladung_string = getScanner().nextLine();
+        int standardpersonmaxpersonenladung = Integer.valueOf(standardpersonmaxpersonenladung_string);
+        StandardPersonenZug newstandardpersonzug = new StandardPersonenZug(standardpersonmodell, standardpersonbetreiber, standardpersondurchschnittsgeschwindigkeit, standardpersonwagonzahl, standardpersonzulassungdatum, standardpersonmaxpersonenladung);
+        standardpersonenzug.add(newstandardpersonzug);
+        zug.add(newstandardpersonzug);
+        o.printData("Standardpersonenzug wurde erstellt!");
+
+    }
+
+    public void createTransportZuege() throws ParseException{
+        o.printData("Transport erstellen: ");
+        o.printData("Modell: ");
+        String transportmodell = getScanner().nextLine();
+        o.printData("Betreiber: ");
+        String transportbetreiber = getScanner().nextLine();
+        o.printData("Durchschnittliche Kilometer in km/h: ");
+        String transportdurchschnittsgeschwindigkeit_string = getScanner().nextLine();
+        double transportdurchschnittsgeschwindigkeit = Double.parseDouble(transportdurchschnittsgeschwindigkeit_string);
+        o.printData("Wagonzahl: ");
+        String transportwagonzahl_string = getScanner().nextLine();
+        int transportwagonzahl = Integer.parseInt(transportwagonzahl_string);
+        o.printData("Zulassungsdatum: ");
+        String transportzulassungsdatum_string = getScanner().nextLine();
+        Date transportzulassungdatum = format.parse(transportzulassungsdatum_string);
+        o.printData("Langstreckenzulassung (ja=true): ");
+        String transportlangstreckenzulassung_string = getScanner().nextLine();
+        boolean transportlangstreckenzulassung = Boolean.valueOf(transportlangstreckenzulassung_string);
+        o.printData("Umweltbelastung (stark/normal/wenig): ");
+        String transportumweltbelastung = getScanner().nextLine();
+        o.printData("Maximales Gesamtgewicht in Kilogramm: ");
+        String transportmaxgesamtgewicht_string = getScanner().nextLine();
+        int transportmaxgesamtgewicht = Integer.valueOf(transportmaxgesamtgewicht_string);
+        TransportZug newtransportzug = new TransportZug(transportmodell, transportbetreiber, transportdurchschnittsgeschwindigkeit, transportwagonzahl, transportzulassungdatum, transportlangstreckenzulassung, transportumweltbelastung, transportmaxgesamtgewicht);
+        transportzug.add(newtransportzug);
+        zug.add(newtransportzug);
+        o.printData("Transportzug wurde erstellt!");
+    }
+
     //Setter & Getter
     public void setHochgeschwindigkeitszug(ArrayList<HochgeschwindigkeitsZug> hochgeschwindigkeitszug) {
         this.hochgeschwindigkeitszug = hochgeschwindigkeitszug;

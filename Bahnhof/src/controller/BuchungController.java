@@ -3,6 +3,7 @@ package controller;
 import model.*;
 import java.util.ArrayList;
 import java.util.Locale;
+import java.util.Scanner;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.text.ParseException;
@@ -13,10 +14,12 @@ public class BuchungController {
     ArrayList<Buchung> buchung = new ArrayList<Buchung>();
     DateFormat format = new SimpleDateFormat("dd.MM.yyyy", Locale.GERMAN);
     Output o = new Output();
+    Scanner scanner; 
 
     public BuchungController(MainController mc){
         setBuchung(buchung);
         setMc(mc);
+        this.setScanner(new Scanner(System.in));
     }
     public void createDemoDaten() throws ParseException{
         Buchung b1 = new Buchung(1, getMc().getZlc().getZuglinie().get(0), getMc().getPc().getPassagiere().get(0), 68.9, format.parse("1.1.2022"));
@@ -32,6 +35,15 @@ public class BuchungController {
                 o.printData("Buchungsnummer: " + buchung.getBuchungsnummer() + "; Abfahrt: " + buchung.getZuglinie().getBahnhof().get(0).getName() + "; Ankunft: " + buchung.getZuglinie().getBahnhof().get(buchung.getZuglinie().getBahnhof().size()-1).getName() + "; Passagier: " + buchung.getPassagier().getVorname() + " " + buchung.getPassagier().getNachname() + "; Preis: " + buchung.getPreis() +"EUR; Buchungsdatum: " + buchung.getBuchungsdatum());
             }
         }
+    }
+
+    public void createBuchung(){
+        o.printData("Buchung erstellen");
+        o.printData("Buchungsnummer: ");
+        String buchungsnummer_string = getScanner().nextLine();
+        int buchungsnummer = Integer.valueOf(buchungsnummer_string);
+        
+
     }
 
     
@@ -54,4 +66,18 @@ public class BuchungController {
     public MainController getMc() {
         return mc;
     }
+    public void setScanner(Scanner scanner) {
+        this.scanner = scanner;
+    }
+    public Output getO() {
+        return o;
+    }
+    public Scanner getScanner() {
+        return scanner;
+    }
+    public void setO(Output o) {
+        this.o = o;
+    }
+
+
 }

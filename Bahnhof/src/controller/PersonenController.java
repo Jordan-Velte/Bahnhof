@@ -120,6 +120,37 @@ public class PersonenController {
 
     //CREATE-METHODEN
     //createPersonen
+    public void createPassagier(){
+        o.printData("Passagier erstellen");
+        o.printData("Vorname: ");
+        String passagiervorname = getScanner().nextLine();
+        o.printData("Nachname: ");
+        String passagiernachname = getScanner().nextLine();
+        o.printData("Kundenummer: ");
+        String passagierkundennummer_string = getScanner().nextLine();
+        int passagierkundennummer = Integer.valueOf(passagierkundennummer_string);
+        Passagier newpassagier = new Passagier(passagiervorname, passagiernachname, passagierkundennummer);
+        passagiere.add(newpassagier);
+        personen.add(newpassagier);
+        o.printData("Passagier wurde erstellt!");
+
+    }
+
+    public void createPersonal(){
+        o.printData("Personal erstellen");
+        o.printData("Vorname: ");
+        String personalvorname = getScanner().nextLine();
+        o.printData("Nachname: ");
+        String personalnachname = getScanner().nextLine();
+        o.printData("Personalnummer: ");
+        String personalnummer_string = getScanner().nextLine();
+        int personalnummer = Integer.valueOf(personalnummer_string);
+        Personal newpersonal = new Personal(personalvorname, personalnachname, personalnummer);
+        personal.add(newpersonal);
+        personen.add(newpersonal);
+        o.printData("Personal wurde erstellt!");
+    }
+
     public void createLokfuehrer() throws ParseException{
         o.printData("Lokführer erstellen");
         o.printData("Vorname: ");
@@ -129,7 +160,7 @@ public class PersonenController {
         o.printData("Lokfuehrernummer: ");
         String lokfuehrernummer_string = getScanner().nextLine();
         int lokfuehrernummer = Integer.parseInt(lokfuehrernummer_string);
-        o.printData("Qualifikation (wenn >1: Kommata!): ");
+        o.printData("Qualifikation (zur Auswahl stehen: reinelektrisch, standardperson, hochgeschwindigkeit und transport; wenn Anzahl>1: Kommata!): ");
         String lokfuehrerqualifikationstring = getScanner().nextLine();
         //Convert comma separate String to array of String
         String[] loksplit = lokfuehrerqualifikationstring.split(",");
@@ -142,6 +173,7 @@ public class PersonenController {
         Lokfuehrer newlokfuehrer = new Lokfuehrer(lokfuehrervorname, lokfuehrernachname, lokfuehrernummer, lokfuehrerqualifikation, lokfuehrerzulassung);
         lokfuehrer.add(newlokfuehrer);
         personen.add(newlokfuehrer);
+        o.printData("Lokführer wurde erstellt!");
 
 
         /*
