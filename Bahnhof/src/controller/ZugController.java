@@ -161,6 +161,62 @@ public class ZugController {
         hochgeschwindigkeitszug.add(newhochgeschwindigkeitzug);
         zug.add(newhochgeschwindigkeitzug);
     }
+
+    // Lennard
+    public void createTransportZuege(){
+        o.printData("Transportzug erstellen: ");
+        o.printData("Modell: ");
+        String transportmodell = getScanner().nextLine();
+        o.printData("Betreiber: ");
+        String transportbetreiber = getScanner().nextLine();
+        o.printData("Durchschnittliche Kilometer in km/h: ");
+        String transportdurchschnittsgeschwindigkeit_string = getScanner().nextLine();
+        double transportdurchschnittsgeschwindigkeit = Double.parseDouble(transportdurchschnittsgeschwindigkeit_string);
+        o.printData("Wagonzahl: ");
+        String transportwagonzahl_string = getScanner().nextLine();
+        int transportwagonzahl = Integer.parseInt(transportwagonzahl_string);
+        o.printData("Zulassungsdatum: ");
+        String transportzulassungsdatum_string = getScanner().nextLine();
+        Date transportzulassungsdatum = format.parse(transportzulassungsdatum_string);
+        o.printData("Langstreckenzulassung: ");
+        String transportlangstreckenzulassung_string = getScanner().nextLine();
+        Boolean transportlangstreckenzulassung = Boolean.parseBoolean(transportlangstreckenzulassung_string);
+        o.printData("Umweltbelastung: ");
+        String transportumweltbelastung = getScanner().nextLine();
+        o.printData("Maximalgewicht in KG");
+        String transportmaxgewichtinkg_string = getScanner().nextLine();
+        double transportmaxgewichtinkg = Double.parseDouble(transportmaxgewichtinkg_string);
+
+        TransportZug newtransportzug = new TransportZug(transportmodell, transportbetreiber, transportdurchschnittsgeschwindigkeit, transportwagonzahl, transportzulassungsdatum, transportlangstreckenzulassung, transportumweltbelastung, transportmaxgewichtinkg);
+        transportzug.add(newtransportzug);
+        zug.add(newtransportzug);
+    }
+    // Lennard
+    public void createStandartPersonenZuege(){
+        o.printData("StandartPersonenzug erstellen: ");
+        o.printData("Modell: ");
+        String standardpersonenmodell = getScanner().nextLine();
+        o.printData("Betreiber: ");
+        String standardpersonenbetreiber = getScanner().nextLine();
+        o.printData("Durchschnittliche Kilometer in km/h: ");
+        String standardpersonendurchschnittsgeschwindigkeit_string = getScanner().nextLine();
+        double standardpersonendurchschnittsgeschwindigkeit = Double.parseDouble(standardpersonendurchschnittsgeschwindigkeit_string);
+        o.printData("Wagonzahl: ");
+        String standardpersonenwagonzahl_string = getScanner().nextLine();
+        int standardpersonenwagonzahl = Integer.parseInt(standardpersonenwagonzahl_string);
+        o.printData("Zulassungsdatum: ");
+        String standardpersonenzulassungsdatum_string = getScanner().nextLine();
+        Date standardpersonenzulassungsdatum = format.parse(standardpersonenzulassungsdatum_string);
+        o.printData("Maximale Anzahl an Passagieren: ");
+        String standardpersonenmaxpersonenladung_string = getScanner().nextLine();
+        int standardpersonenmaxpersonenladung = Integer.parseInt(standardpersonenmaxpersonenladung_string);
+
+        StandardPersonenZug newstandardpersonenzuege = new StandardPersonenZug(standardpersonenmodell, standardpersonenbetreiber, standardpersonendurchschnittsgeschwindigkeit, standardpersonenwagonzahl, standardpersonenzulassungsdatum, standardpersonenmaxpersonenladung);
+        standardpersonenzug.add(newstandardpersonenzuege);
+        zug.add(newstandardpersonenzuege);
+    }
+
+
     //Setter & Getter
     public void setHochgeschwindigkeitszug(ArrayList<HochgeschwindigkeitsZug> hochgeschwindigkeitszug) {
         this.hochgeschwindigkeitszug = hochgeschwindigkeitszug;

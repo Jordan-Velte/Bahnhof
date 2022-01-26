@@ -4,6 +4,7 @@ import model.*;
 import view.Output;
 
 import java.util.ArrayList;
+// Import für Datum
 import java.util.Locale;
 
 import java.text.DateFormat;
@@ -120,6 +121,7 @@ public class PersonenController {
 
     //CREATE-METHODEN
     //createPersonen
+    // Jordan
     public void createLokfuehrer() throws ParseException{
         o.printData("Lokführer erstellen");
         o.printData("Vorname: ");
@@ -143,6 +145,8 @@ public class PersonenController {
         lokfuehrer.add(newlokfuehrer);
         personen.add(newlokfuehrer);
 
+        lokfuehrer.add(new Lokfuehrer(lokfuehrervorname, lokfuehrernachname, lokfuehrernummer, lokfuehrerqualifikation, lokfuehrerzulassung));
+        
 
         /*
         // 1. EIngabe für die Qualifikation
@@ -158,6 +162,69 @@ public class PersonenController {
         
     }
 
+    // Lennard
+    public void createPassagiere(){
+        o.printData("Passagier erstellen");
+        o.printData("Vorname: ");
+        String passagiervorname = getScanner().nextLine();
+        o.printData("Nachname: ");
+        String passagiernachname = getScanner().nextLine();
+        o.printData("Kundennummer: ");
+        String passagierkundennummer_string = getScanner().nextLine();
+        int passagierkundennummer = Integer.parseInt(passagierkundennummer_string);
+        
+        passagiere.add(new Passagier(passagiervorname, passagiernachname, passagierkundennummer));
+        personen.add(new Passagier(passagiervorname, passagiernachname, passagierkundennummer));
+    }
+
+    public void createPersonal(){
+        o.printData("Personal erstellen");
+        o.printData("Vorname: ");
+        String personalvorname = getScanner().nextLine();
+        o.printData("Nachname: ");
+        String personalnachname = getScanner().nextLine();
+        o.printData("Personalnummer: ");
+        String personalnummer_string = getScanner().nextLine();
+        int personalnummer = Integer.parseInt(personalnummer_string);
+
+        personal.add(new Personal(personalvorname, personalnachname, personalnummer));
+        personen.add(new Personal(personalvorname, personalnachname, personalnummer));
+    }
+
+
+    public void printOutDemoDatenPersonen(){
+        for(Person personen : personen){
+            if(personen != null){
+                o.printData("Nachname: " + personen.getNachname() + "; Vorname: " + personen.getVorname());
+            }
+        }
+    }
+
+    public void printOutDemoDatenLokfuehrer(){
+        for(Lokfuehrer lokfuehrer: lokfuehrer){
+            if(lokfuehrer != null){
+                o.printData("Nachname: " + lokfuehrer.getNachname() + "; Vorname: " + lokfuehrer.getVorname() + "; Lokführernummer: " + lokfuehrer.getLokfuehrernummer());
+            }
+        }
+    }
+
+    public void printOutDemoDatenPassagiere(){
+        for(Passagier passagiere : passagiere){
+            if(passagiere != null){
+                o.printData("Nachname: " + passagiere.getNachname() + "; Vorname: " + passagiere.getVorname() + "; Kundennummer: " + passagiere.getKundennummer());
+            }
+        }
+    }
+
+    public void printOutDemoDatenPersonal(){
+        for(Personal personal : personal){
+            if(personal != null){
+                o.printData("Nachname: " + personal.getNachname() + "; Vorname: " + personal.getVorname() + "; Personalnummer: " + personal.getPersonalnummer());
+            }
+        }
+    }
+
+    
     // Setter und Getter
     public MainController getMc() {
         return mc;

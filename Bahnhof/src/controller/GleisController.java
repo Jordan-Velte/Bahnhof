@@ -46,6 +46,15 @@ public class GleisController {
 
     }
 
+    public void createDemoDatenGleise(){
+
+        for(Gleis gleis : gleise){
+            o.printData();
+        }
+
+    }
+
+
     // Setter und Getter
 
     public ArrayList<Gleis> getGleise() {
