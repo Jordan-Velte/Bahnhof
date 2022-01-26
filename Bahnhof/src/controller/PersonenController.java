@@ -9,6 +9,8 @@ import java.util.Locale;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.text.ParseException;
+import java.util.Scanner;
+import java.util.Date;
 //Lennard
 
 public class PersonenController {
@@ -18,6 +20,7 @@ public class PersonenController {
     ArrayList<Lokfuehrer> lokfuehrer;
     ArrayList<Passagier> passagiere;
     ArrayList<Personal> personal;
+    Scanner scanner;
     Output o = new Output();
 
     DateFormat format = new SimpleDateFormat("dd.MM.yyyy", Locale.GERMAN);
@@ -28,6 +31,7 @@ public class PersonenController {
         lokfuehrer = new ArrayList<Lokfuehrer>();
         passagiere = new ArrayList<Passagier>();
         personal = new ArrayList<Personal>();
+        this.setScanner(new Scanner(System.in));
     }
 
 
@@ -111,6 +115,39 @@ public class PersonenController {
         }
     }
 
+    //CREATE-METHODEN
+    //createPersonen
+    public void createLokfuehrer(){
+        o.printData("Lokführer erstellen");
+        o.printData("Vorname: ");
+        String lokfuehrervorname = getScanner().nextLine();
+        o.printData("Nachname: ");
+        String lokfuehrernachname = getScanner().nextLine();
+        o.printData("Lokfuehrernummer: ");
+        String lokfuehrernummer_string = getScanner().nextLine();
+        int lokfuehrernummer = Integer.parseInt(lokfuehrernummer_string);
+        //o.printData("Qualifikation: ");
+
+        o.printData("Zulassung (Datum): ");
+        String lokfuehrerzulassung_string = getScanner().nextLine();
+        Date lokfuehrerzulassung = format.parse(lokfuehrerzulassung_string);
+
+        // 1. EIngabe für die Qualifikation
+
+        String q = "reinelektrisch hochgeschwindigkeit";
+
+        // SPLIT an der Leertaste -> String Array "reinelektrisch", "hochgeschwindigkeit"
+
+        ArrayList<String> quali = new ArrayList<>();
+        quali.add(q);
+        lokfuehrer.add(new Lokfuehrer(lokfuehrervorname, lokfuehrernachname, lokfuehrernummer, quali, lokfuehrerzulassung));
+
+
+        
+
+        
+    }
+
     // Setter und Getter
     public MainController getMc() {
         return mc;
@@ -119,6 +156,14 @@ public class PersonenController {
     public void setMc(MainController mc) {
         this.mc = mc;
     }
+
+    public void setScanner(Scanner scanner) {
+        this.scanner = scanner;
+    }
+    public Scanner getScanner() {
+        return scanner;
+    }
+
 
     public ArrayList<Person> getPersonen() {
         return personen;
