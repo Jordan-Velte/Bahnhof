@@ -3,6 +3,7 @@ package controller;
 import model.*;
 import java.util.ArrayList;
 import view.*;
+import java.util.Scanner;
 
 // Lennard
 public class BahnhofsController {
@@ -11,10 +12,12 @@ public class BahnhofsController {
     ArrayList<Bahnhof> bahnhoefe;
     GleisController gc;
     Output o = new Output();
+    Scanner scanner; 
 
     public BahnhofsController(MainController mc){
         setMc(mc);
         bahnhoefe = new ArrayList<Bahnhof>();
+        this.setScanner(new Scanner(System.in));
     }
 
     public void createDemoDaten(){
@@ -67,6 +70,56 @@ public class BahnhofsController {
         }
     }
 
+    //createBahnhoefe:
+    public void createBahnhof(){
+        o.printData("Bahnhof erstellen");
+        o.printData("Name: ");
+        String bahnhofname = getScanner().nextLine();
+        o.printData("Standort: ");
+        String bahnhofstandort = getScanner().nextLine();
+        o.printData("Gleise: ");
+        int i = 0;
+        for(Gleis gleis : getMc().getGc().getGleise()){
+            o.printData("Anzahl an Gleise (transitiv): ");
+            if(gleis!=null){
+                o.printData(i + " - " + gleis.getName());
+                i++;
+            }
+        }
+        String gleis_choice = getScanner().nextLine();
+        if(gleis_choice.equals("0")){
+            ArrayList<Gleis> gleis1 = new ArrayList<Gleis>();
+            gleis1.add(getMc().getGc().getGleise().get(0));
+            Bahnhof newbahnhof1 = new Bahnhof(bahnhofname, bahnhofstandort, gleis1);
+            bahnhoefe.add(newbahnhof1);
+        }
+        else if(gleis_choice.equals("1")){
+            ArrayList<Gleis> gleis12 = new ArrayList<Gleis>();
+            gleis12.add(getMc().getGc().getGleise().get(0));
+            gleis12.add(getMc().getGc().getGleise().get(1));
+            Bahnhof newbahnhof2 = new Bahnhof(bahnhofname, bahnhofstandort, gleis12);
+            bahnhoefe.add(newbahnhof2);
+        }
+        else if(gleis_choice.equals("2")){
+            ArrayList<Gleis> gleis123 = new ArrayList<Gleis>();
+            gleis123.add(getMc().getGc().getGleise().get(0));
+            gleis123.add(getMc().getGc().getGleise().get(1));
+            gleis123.add(getMc().getGc().getGleise().get(2));
+            Bahnhof newbahnhof3 = new Bahnhof(bahnhofname, bahnhofstandort, gleis123);
+            bahnhoefe.add(newbahnhof3);
+        }
+        else if(gleis_choice.equals("3")){
+            ArrayList<Gleis> gleis1234 = new ArrayList<Gleis>();
+            gleis1234.add(getMc().getGc().getGleise().get(0));
+            gleis1234.add(getMc().getGc().getGleise().get(1));
+            gleis1234.add(getMc().getGc().getGleise().get(2));
+            gleis1234.add(getMc().getGc().getGleise().get(3));
+            Bahnhof newbahnhof4 = new Bahnhof(bahnhofname, bahnhofstandort, gleis1234);
+            bahnhoefe.add(newbahnhof4);
+        }
+        
+    }
+
     // Setter und Getter
     public ArrayList<Bahnhof> getBahnhoefe() {
         return bahnhoefe;
@@ -89,5 +142,18 @@ public class BahnhofsController {
     public void setMc(MainController mc) {
         this.mc = mc;
     }
+    public void setO(Output o) {
+        this.o = o;
+    }
+    public Output getO() {
+        return o;
+    }
+    public void setScanner(Scanner scanner) {
+        this.scanner = scanner;
+    }
+    public Scanner getScanner() {
+        return scanner;
+    }
+
 
 }

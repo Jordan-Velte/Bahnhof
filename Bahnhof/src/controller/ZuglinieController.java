@@ -11,12 +11,13 @@ import view.*;
 public class ZuglinieController {
     MainController mc;
     Output o = new Output();
-    ArrayList<Zuglinie> zuglinie = new ArrayList<Zuglinie>();
+    ArrayList<Zuglinie> zuglinie;
     DateFormat format = new SimpleDateFormat("dd.MM.yyyy", Locale.GERMAN);
 
     public ZuglinieController(MainController mc){
         setMc(mc);
         setZuglinie(zuglinie);
+        zuglinie = new ArrayList<Zuglinie>();;
     }
 
 

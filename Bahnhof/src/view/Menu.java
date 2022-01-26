@@ -33,7 +33,7 @@ public class Menu {
             String eingabechoice = getScanner().nextLine();
             o.printData("Ihre Auswahl ist: " + eingabechoice);
             if(eingabechoice.equals("1")){
-                //Bahnhof eingabe
+                getMc().getBc().createBahnhof();
             }
             else if(eingabechoice.equals("2")){
                 o.printData("Wählen Sie die Instanzen, die Sie ausgeben möchten:");
@@ -44,16 +44,16 @@ public class Menu {
                 String zugeingabechoice = getScanner().nextLine();
                 o.printData("Ihre Auswahl ist: " + zugeingabechoice);
                 if(zugeingabechoice.equals("1")){
-                    //Reinelektrisch
+                    getMc().getZc().createReinelektrischZuege();
                 }
                 else if(zugeingabechoice.equals("2")){
-                    //Hochgeschwindigkeit
+                    getMc().getZc().createHochgeschwindigkeitsZuege();
                 }
                 else if(zugeingabechoice.equals("3")){
-                    //Standardpersonzüge
+                    getMc().getZc().createStandardpersonenZuege();
                 }
                 else if(zugeingabechoice.equals("4")){
-                    //transport
+                    getMc().getZc().createTransportZuege();
                 }
             }
             else if(eingabechoice.equals("3")){
@@ -67,10 +67,10 @@ public class Menu {
                     getMc().getPc().createLokfuehrer();
                 }
                 else if(personeingabechoice.equals("2")){
-                    //Personal create
+                    getMc().getPc().createPersonal();
                 }
                 else if(personeingabechoice.equals("3")){
-                    //Passagiere create
+                    getMc().getPc().createPassagier();
                 }
                 
             }

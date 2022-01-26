@@ -42,7 +42,51 @@ public class BuchungController {
         o.printData("Buchungsnummer: ");
         String buchungsnummer_string = getScanner().nextLine();
         int buchungsnummer = Integer.valueOf(buchungsnummer_string);
+        o.printData("Abfahrt: ");
+        int i1=0;
+        for(Zuglinie zuglinie : getMc().getZlc().getZuglinie()){
+            if(zuglinie!=null){
+                o.printData(i1 + " - " + zuglinie.getZugliniennummer() + ": " + zuglinie.getBahnhof().get(0) + "-" + zuglinie.getBahnhof().get(zuglinie.getBahnhof().size()-1));
+                i1++;
+            }
+        }
+        String zugliniechoice = getScanner().nextLine();
+        int zuglinie_index = Integer.valueOf(zugliniechoice);
+        Zuglinie buchungzuglinie = getMc().getZlc().getZuglinie().get(zuglinie_index);
+        o.printData("Passagier: ");
+        int i2 = 0;
+        for(Passagier passagier : getMc().getPc().getPassagiere()){
+            if(passagier!=null){
+                o.printData(i2 + " - " + passagier.getVorname() + " " + passagier.getNachname());
+                i2++;
+            }
+        }
+        //Weitere Daten kommen noch!
+
+        /*
+        int i1 = 0;
+        for(Bahnhof bahnhof : getMc().getBc().getBahnhoefe()){
+            if(bahnhof!=null){
+                //Hoffentlich klappt das
+                o.printData(i1 + " - " + getMc().getBc().getBahnhoefe().get(i1).getName() + " " + getMc().getBc().getBahnhoefe().get(i1).getStandort());
+                i1++;
+            }
+        }
+        String bahnhofabfahrt_choice = getScanner().nextLine();
+        int bahnhofabfahrt_index = Integer.valueOf(bahnhofabfahrt_choice);
         
+        o.printData("Abfahrt: ");
+        int i2 = 0;
+        for(Bahnhof bahnhof : getMc().getBc().getBahnhoefe()){
+            if(bahnhof!=null){
+                //Hoffentlich klappt das
+                o.printData(i2 + " - " + getMc().getBc().getBahnhoefe().get(i2).getName() + " " + getMc().getBc().getBahnhoefe().get(i2).getStandort());
+                i2++;
+            }
+        }
+        String bahnhofankunft_choice = getScanner().nextLine();
+        int bahnhofankunft_index = Integer.valueOf(bahnhofankunft_choice);
+        */
 
     }
 
