@@ -11,6 +11,9 @@ import java.text.SimpleDateFormat;
 import java.text.ParseException;
 import java.util.Scanner;
 import java.util.Date;
+
+import java.util.List;
+import java.util.Arrays;
 //Lennard
 
 public class PersonenController {
@@ -117,7 +120,7 @@ public class PersonenController {
 
     //CREATE-METHODEN
     //createPersonen
-    public void createLokfuehrer(){
+    public void createLokfuehrer() throws ParseException{
         o.printData("Lokführer erstellen");
         o.printData("Vorname: ");
         String lokfuehrervorname = getScanner().nextLine();
@@ -126,12 +129,20 @@ public class PersonenController {
         o.printData("Lokfuehrernummer: ");
         String lokfuehrernummer_string = getScanner().nextLine();
         int lokfuehrernummer = Integer.parseInt(lokfuehrernummer_string);
-        //o.printData("Qualifikation: ");
-
+        o.printData("Qualifikation (wenn >1: Kommata!): ");
+        String lokfuehrerqualifikationstring = getScanner().nextLine();
+        //Convert comma separate String to array of String
+        String[] loksplit = lokfuehrerqualifikationstring.split(",");
+        //Convert String array to list of String
+        List<String> fixedqualilist = Arrays.asList(loksplit);
+        ArrayList<String> lokfuehrerqualifikation = new ArrayList<String>(fixedqualilist);
         o.printData("Zulassung (Datum): ");
         String lokfuehrerzulassung_string = getScanner().nextLine();
         Date lokfuehrerzulassung = format.parse(lokfuehrerzulassung_string);
 
+        lokfuehrer.add(new Lokfuehrer(lokfuehrervorname, lokfuehrernachname, lokfuehrernummer, lokfuehrerqualifikation, lokfuehrerzulassung));
+
+        /*
         // 1. EIngabe für die Qualifikation
 
         String q = "reinelektrisch hochgeschwindigkeit";
@@ -139,10 +150,7 @@ public class PersonenController {
         // SPLIT an der Leertaste -> String Array "reinelektrisch", "hochgeschwindigkeit"
 
         ArrayList<String> quali = new ArrayList<>();
-        quali.add(q);
-        lokfuehrer.add(new Lokfuehrer(lokfuehrervorname, lokfuehrernachname, lokfuehrernummer, quali, lokfuehrerzulassung));
-
-
+        quali.add(q);*/
         
 
         
