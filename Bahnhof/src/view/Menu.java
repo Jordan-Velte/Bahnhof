@@ -1,6 +1,10 @@
 //Jordan
 package view;
+import java.text.ParseException;
 import java.util.Scanner;
+
+import javax.print.PrintException;
+
 import controller.*;
 public class Menu {
     Scanner scanner;
@@ -14,13 +18,68 @@ public class Menu {
     }
 
     //Menu-Methode
-    public void startMenu(){
+    public void startMenu() throws ParseException{
         o.printData("(1) Dateneingabe");
         o.printData("(2) Datenausgabe");
         String initchoice = getScanner().nextLine();
         o.printData("Ihre Auswahl ist: " + initchoice);
         if(initchoice.equals("1")){
-            o.printData("Dateingabe derzeit nicht verfügbar.");
+            o.printData("Wählen Sie die Instanzen, die Sie eingeben möchten: ");
+            o.printData("(1) Bahnhöfe");
+            o.printData("(2) Züge");
+            o.printData("(3) Personen");
+            o.printData("(4) Zuglinien");
+            o.printData("(5) Buchungen");
+            String eingabechoice = getScanner().nextLine();
+            o.printData("Ihre Auswahl ist: " + eingabechoice);
+            if(eingabechoice.equals("1")){
+                //Bahnhof eingabe
+            }
+            else if(eingabechoice.equals("2")){
+                o.printData("Wählen Sie die Instanzen, die Sie ausgeben möchten:");
+                o.printData("(1) Reinelektrische Züge");
+                o.printData("(2) Hochgeschwindigkeitszüge");
+                o.printData("(3) Standardpersonenzüge");
+                o.printData("(4) Transportzüge");
+                String zugeingabechoice = getScanner().nextLine();
+                o.printData("Ihre Auswahl ist: " + zugeingabechoice);
+                if(zugeingabechoice.equals("1")){
+                    //Reinelektrisch
+                }
+                else if(zugeingabechoice.equals("2")){
+                    //Hochgeschwindigkeit
+                }
+                else if(zugeingabechoice.equals("3")){
+                    //Standardpersonzüge
+                }
+                else if(zugeingabechoice.equals("4")){
+                    //transport
+                }
+            }
+            else if(eingabechoice.equals("3")){
+                o.printData("Wählen Sie die Instanzen, die Sie ausgeben möchten:");
+                o.printData("(1) Lokführer");
+                o.printData("(2) Personal");
+                o.printData("(3) Passagiere");
+                String personeingabechoice = getScanner().nextLine();
+                o.printData("Ihre Auswahl ist: " + personeingabechoice);
+                if(personeingabechoice.equals("1")){
+                    getMc().getPc().createLokfuehrer();
+                }
+                else if(personeingabechoice.equals("2")){
+                    //Personal create
+                }
+                else if(personeingabechoice.equals("3")){
+                    //Passagiere create
+                }
+                
+            }
+            else if(eingabechoice.equals("4")){
+                //Züge
+            } 
+            else if(eingabechoice.equals("5")){
+                //Buchungen
+            }
         }
         else if(initchoice.equals("2")){
             o.printData("Wählen Sie die Instanzen, die Sie ausgeben möchten:");

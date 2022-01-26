@@ -37,7 +37,7 @@ public class MainController {
 
     }
 
-    public void createMenu(){
+    public void createMenu() throws ParseException{
         getMenu().startMenu();
     }
 

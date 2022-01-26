@@ -139,8 +139,10 @@ public class PersonenController {
         o.printData("Zulassung (Datum): ");
         String lokfuehrerzulassung_string = getScanner().nextLine();
         Date lokfuehrerzulassung = format.parse(lokfuehrerzulassung_string);
+        Lokfuehrer newlokfuehrer = new Lokfuehrer(lokfuehrervorname, lokfuehrernachname, lokfuehrernummer, lokfuehrerqualifikation, lokfuehrerzulassung);
+        lokfuehrer.add(newlokfuehrer);
+        personen.add(newlokfuehrer);
 
-        lokfuehrer.add(new Lokfuehrer(lokfuehrervorname, lokfuehrernachname, lokfuehrernummer, lokfuehrerqualifikation, lokfuehrerzulassung));
 
         /*
         // 1. EIngabe für die Qualifikation

@@ -2,8 +2,10 @@
 package controller;
 import model.*;
 import java.util.ArrayList;
+import java.util.Date;
 //Mehrere Imports für Datum/Standort!
 import java.util.Locale;
+import java.util.Scanner;
 import java.text.DateFormat;
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
@@ -16,6 +18,7 @@ public class ZugController {
     ArrayList<TransportZug> transportzug;
     ArrayList<ReinelektrischZug> reinelektrischzug;
     ArrayList<StandardPersonenZug> standardpersonenzug;
+    Scanner scanner;
     //Formatfestlegung für die Datumsvariablen. Das Datum orientiert sich an dem deutschen Standard --> Per Punktnotation an jener Instanz können nun über die parse-Methode Strings übergeben werden, welche sich an diesem definierten Datumsformat orientieren.
     DateFormat format = new SimpleDateFormat("dd.MM.yyyy", Locale.GERMAN);
     Output o = new Output();
@@ -26,6 +29,7 @@ public class ZugController {
         transportzug = new ArrayList<TransportZug>();
         reinelektrischzug = new ArrayList<ReinelektrischZug>();
         standardpersonenzug = new ArrayList<StandardPersonenZug>();
+        this.setScanner(new Scanner(System.in));
     }
 
     public void createDemoDaten() throws ParseException{
@@ -108,6 +112,55 @@ public class ZugController {
         }
     }
 
+    //Create Zuege: 
+    //create Reinelektrischzuege
+    public void createReinelektrischZuege() throws ParseException{
+        o.printData("Reinelektrischen Zug erstellen: ");
+        o.printData("Modell: ");
+        String reinelektrischmodell = getScanner().nextLine();
+        o.printData("Betreiber: ");
+        String reinelektrischbetreiber = getScanner().nextLine();
+        o.printData("Durchschnittliche Kilometer in km/h: ");
+        String reinelektrischdurchschnittsgeschwindigkeit_string = getScanner().nextLine();
+        double reinelektrischdurchschnittsgeschwindigkeit = Double.parseDouble(reinelektrischdurchschnittsgeschwindigkeit_string);
+        o.printData("Wagonzahl: ");
+        String reinelektrischwagonzahl_string = getScanner().nextLine();
+        int reinelektrischwagonzahl = Integer.parseInt(reinelektrischwagonzahl_string);
+        o.printData("Zulassungsdatum: ");
+        String reinelektrischzulassungsdatum_string = getScanner().nextLine();
+        Date reinelektrischzulassungdatum = format.parse(reinelektrischzulassungsdatum_string);
+        o.printData("Energieversorgung: ");
+        String reinelektrischenergieversorgung = getScanner().nextLine();
+        o.printData("Lebensdauer der Batterie (in Jahren(): ");
+        String reinelektrischbatterielebensdauer_string = getScanner().nextLine();
+        double reinelektrischbatterielebensdauer = Double.parseDouble(reinelektrischbatterielebensdauer_string);
+        ReinelektrischZug newreinelektrischzug = new ReinelektrischZug(reinelektrischmodell, reinelektrischbetreiber, reinelektrischdurchschnittsgeschwindigkeit, reinelektrischwagonzahl, reinelektrischzulassungdatum, reinelektrischenergieversorgung, reinelektrischbatterielebensdauer);
+        reinelektrischzug.add(newreinelektrischzug);
+        zug.add(newreinelektrischzug);
+    }
+
+    public void createHochgeschwindigkeitsZuege() throws ParseException{
+        o.printData("Hochgeschwindigkeitszug erstellen: ");
+        o.printData("Modell: ");
+        String hochgeschwindigkeitmodell = getScanner().nextLine();
+        o.printData("Betreiber: ");
+        String hochgeschwindigkeitbetreiber = getScanner().nextLine();
+        o.printData("Durchschnittliche Kilometer in km/h: ");
+        String hochgeschwindigkeitdurchschnittsgeschwindigkeit_string = getScanner().nextLine();
+        double hochgeschwindigkeithdurchschnittsgeschwindigkeit = Double.parseDouble(hochgeschwindigkeitdurchschnittsgeschwindigkeit_string);
+        o.printData("Wagonzahl: ");
+        String hochgeschwindigkeitwagonzahl_string = getScanner().nextLine();
+        int hochgeschwindigkeitwagonzahl = Integer.parseInt(hochgeschwindigkeitwagonzahl_string);
+        o.printData("Zulassungsdatum: ");
+        String hochgeschwindigkeitzulassungsdatum_string = getScanner().nextLine();
+        Date hochgeschwindigkeitzulassungdatum = format.parse(hochgeschwindigkeitzulassungsdatum_string);
+        o.printData("Entwicklungskosten in EUR: ");
+        String hochgeschwindigkeitentwicklungskosten_string = getScanner().nextLine();
+        double hochgeschwindigkeitentwicklungskosten = Double.parseDouble(hochgeschwindigkeitentwicklungskosten_string);
+        HochgeschwindigkeitsZug newhochgeschwindigkeitzug = new HochgeschwindigkeitsZug(hochgeschwindigkeitmodell, hochgeschwindigkeitbetreiber, hochgeschwindigkeithdurchschnittsgeschwindigkeit, hochgeschwindigkeitwagonzahl, hochgeschwindigkeitzulassungdatum, hochgeschwindigkeitentwicklungskosten);
+        hochgeschwindigkeitszug.add(newhochgeschwindigkeitzug);
+        zug.add(newhochgeschwindigkeitzug);
+    }
     //Setter & Getter
     public void setHochgeschwindigkeitszug(ArrayList<HochgeschwindigkeitsZug> hochgeschwindigkeitszug) {
         this.hochgeschwindigkeitszug = hochgeschwindigkeitszug;
@@ -151,6 +204,13 @@ public class ZugController {
     public ArrayList<Zug> getZug() {
         return zug;
     }
+    public void setScanner(Scanner scanner) {
+        this.scanner = scanner;
+    }
+    public Scanner getScanner() {
+        return scanner;
+    }
+
 
 
 }
