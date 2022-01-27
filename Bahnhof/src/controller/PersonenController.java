@@ -138,7 +138,7 @@ public class PersonenController {
         String passagiervorname = getScanner().nextLine();
         o.printData("Nachname: ");
         String passagiernachname = getScanner().nextLine();
-        o.printData("Kundenummer: ");
+        o.printData("Kundennummer: ");
         String passagierkundennummer_string = getScanner().nextLine();
         int passagierkundennummer = Integer.valueOf(passagierkundennummer_string);
         Passagier newpassagier = new Passagier(passagiervorname, passagiernachname, passagierkundennummer);
