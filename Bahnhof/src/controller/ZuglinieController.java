@@ -137,7 +137,7 @@ public class ZuglinieController {
                 o.printData("Weitere Bahnhöfe (ja/nein)?");
                 weiterfrage2 = getScanner().nextLine();
             }
-            while(weiterfrage2.equals("nein")){
+            if(weiterfrage2.equals("nein")){
                 o.printData("Fahrtdatum: ");
                 String zugliniefahrtdatum_string = getScanner().nextLine();
                 Date zugliniefahrtdatum = format.parse(zugliniefahrtdatum_string);
@@ -145,6 +145,7 @@ public class ZuglinieController {
                 zuglinie.add(newzuglinie);
                 o.printData("Zugline wurde erstellt!");
             }
+            
             }
             /*
             o.printData("Bahnhöfe (wenn fertig: abbruch): ");
