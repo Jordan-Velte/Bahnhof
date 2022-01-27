@@ -56,6 +56,7 @@ public class BahnhofsController {
     //Bahnhöfe Ausgabe:
     public void printOutBahnhof(){
         for(Bahnhof bahnhof : bahnhoefe){
+            
             if(bahnhof != null && bahnhof.getGleiskombination().size() == 1){
                 o.printData(bahnhof.getName() + " - Standort: " + bahnhof.getStandort() + "; Gleise: " + bahnhof.getGleiskombination().get(0).getName());
             }
