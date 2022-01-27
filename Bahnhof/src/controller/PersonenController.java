@@ -82,6 +82,7 @@ public class PersonenController {
         personen.add(lf1);
         personen.add(lf2);
         personen.add(lf3);
+        
 
     }
 
@@ -115,6 +116,7 @@ public class PersonenController {
         for(Personal personal : personal){
             if(personal!=null){
                 o.printData(personal.getVorname() + " " + personal.getNachname());
+
             }
         }
     }
@@ -223,7 +225,7 @@ public class PersonenController {
     }
     */
 
-
+    /*
     public void printOutDemoDatenPersonen(){
         for(Person personen : personen){
             if(personen != null){
@@ -255,6 +257,7 @@ public class PersonenController {
             }
         }
     }
+    */
 
     
     // Setter und Getter
