@@ -18,6 +18,7 @@ public class Menu {
     public void startMenu() throws ParseException{
         o.printData("(1) Dateneingabe");
         o.printData("(2) Datenausgabe");
+        o.printData("(3) Weitere Optionen");
         String initchoice = getScanner().nextLine();
         o.printData("Ihre Auswahl ist: " + initchoice);
         if(initchoice.equals("1")){
@@ -189,6 +190,28 @@ public class Menu {
                 getMc().getBuc().printOutBuchung();
             }
         }
+        else if(initchoice.equals("3"))
+            o.printData("Wählen Sie die Instanzen, die Sie überprüfen möchten:");
+            o.printData("(1) Bahnhof");
+            o.printData("(2) Zuglinie");
+            o.printData("(3) Buchung");
+            String weitereoptionchoice = getScanner().nextLine();
+            o.printData("Ihre Auswahl ist: " + weitereoptionchoice);
+            if (weitereoptionchoice.equals("1")){
+                o.printData("Segmentierung der Bahnhofsgrösse: ");
+                getMc().getBc().checkBahnhofgroesse();
+            }
+            else if(weitereoptionchoice.equals("2")){
+                o.printData("Überprüfung der Lokführer-Qualifikation: ");
+                getMc().getZlc().checkLokfuehrerQualifikationReinelektrisch();
+                getMc().getZlc().checkLokfuehrerQualifikationHochgeschwindigkeit();
+                getMc().getZlc().checkLokfuehrerQualifikationStandardPerson();
+                getMc().getZlc().checkLokfuehrerQualifikationTransport();
+            }
+            else if(weitereoptionchoice.equals("3")){
+                o.printData("Segmentierung der Buchungspreise: ");
+                getMc().getBuc().checkBuchungPreis();
+            }
         else{
             o.printData("Fehlermeldung: Sie haben eine invalide Eingabe getroffen!");
         }

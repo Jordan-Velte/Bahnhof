@@ -56,7 +56,7 @@ public class BahnhofsController {
     //Bahnhöfe Ausgabe:
     public void printOutBahnhof(){
         for(Bahnhof bahnhof : bahnhoefe){
-            
+
             if(bahnhof != null && bahnhof.getGleiskombination().size() == 1){
                 o.printData(bahnhof.getName() + " - Standort: " + bahnhof.getStandort() + "; Gleise: " + bahnhof.getGleiskombination().get(0).getName());
             }
@@ -124,6 +124,21 @@ public class BahnhofsController {
             o.printData("Bahnhof wurde erstellt!");
         }
         
+    }
+
+    public void checkBahnhofgroesse(){
+        for(Bahnhof bahnhof : bahnhoefe){
+            if(bahnhof!=null & bahnhof.getGleiskombination().size() ==1){
+                o.printData(bahnhof.getName() + " ist ein kleiner Bahnhof (geringes Verkehrsaufkommen)");
+            }
+            else if(bahnhof!=null & bahnhof.getGleiskombination().size() >1 && bahnhof.getGleiskombination().size() <4) {
+                o.printData(bahnhof.getName() + " ist ein mittelgrosser Bahnhof (mittleres Verkehrsaufkommen)");
+            }
+            else if(bahnhof!=null & bahnhof.getGleiskombination().size()>=4){
+                o.printData(bahnhof.getName() + " ist ein grosser Bahnhof (hohes Verkehrsaufkommen)");
+            }
+
+        }
     }
 
     // Setter und Getter

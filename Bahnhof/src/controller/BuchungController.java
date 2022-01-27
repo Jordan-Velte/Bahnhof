@@ -129,6 +129,20 @@ public class BuchungController {
 
     }
 
+    public void checkBuchungPreis(){
+        for(Buchung buchung : buchung){
+            if(buchung!=null && buchung.getPreis()<=50){
+                o.printData("Die Buchung der Buchungsnummer " + buchung.getBuchungsnummer() + " des Passagiers " + buchung.getPassagier().getVorname() + " " + buchung.getPassagier().getNachname() + " ist der Preiskategorie GÜNSTIG50TARIF zuzordnen.");
+            }
+            else if(buchung!=null && buchung.getPreis()>50 && buchung.getPreis()<=150){
+                o.printData("Die Buchung der Buchungsnummer " + buchung.getBuchungsnummer() + " des Passagiers " + buchung.getPassagier().getVorname() + " " + buchung.getPassagier().getNachname() + " ist der Preiskategorie STANDARDTARIF zuzordnen.");
+            }
+            else if(buchung!=null && buchung.getPreis()<150){
+                o.printData("Die Buchung der Buchungsnummer " + buchung.getBuchungsnummer() + " des Passagiers " + buchung.getPassagier().getVorname() + " " + buchung.getPassagier().getNachname() + " ist der Preiskategorie FULLFLEXTARIF zuzordnen.");
+            }
+        }
+    }
+
     
 
     public void setBuchung(ArrayList<Buchung> buchung) {
