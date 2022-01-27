@@ -25,6 +25,9 @@ public class MainController {
         setBc(new BahnhofsController(this));
         setGc(new GleisController(this));
         setMenu(new Menu(this));
+    
+        createDemoDatenset();
+        
     }
 
     public void createDemoDatenset() throws ParseException{

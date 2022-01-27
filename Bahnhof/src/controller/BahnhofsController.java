@@ -40,11 +40,12 @@ public class BahnhofsController {
         gleis_1_2_3_4.add(getMc().getGc().getGleise().get(2));
         gleis_1_2_3_4.add(getMc().getGc().getGleise().get(3));
 
+        // Demodaten für Bahnhöfe
         Bahnhof b1 = new Bahnhof("Hamburg Hauptbahnhof", "Hamburg", gleis_1_2_3);
         Bahnhof b2 = new Bahnhof("Berlin Hauptbahnhof", "Berlin", gleis_1_2_3_4);
         Bahnhof b3 = new Bahnhof("Hannover Hauptbahnhof", "Hannover", gleis_1_2);
         Bahnhof b4 = new Bahnhof("Frankfurt Hauptbahnhof", "Frankfurt", gleis_1_2);
-
+        // Hinzufügen in ArrayList
         bahnhoefe.add(b1);
         bahnhoefe.add(b2);
         bahnhoefe.add(b3);

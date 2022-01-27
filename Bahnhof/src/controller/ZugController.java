@@ -164,6 +164,7 @@ public class ZugController {
         o.printData("Hochgeschwindigkeitszug wurde erstellt!");
     }
 
+<<<<<<< HEAD
     public void createStandardpersonenZuege() throws ParseException{
         o.printData("Standardpersonenzug erstellen: ");
         o.printData("Modell: ");
@@ -191,6 +192,11 @@ public class ZugController {
 
     public void createTransportZuege() throws ParseException{
         o.printData("Transport erstellen: ");
+=======
+    // Lennard
+    public void createTransportZuege(){
+        o.printData("Transportzug erstellen: ");
+>>>>>>> c3a19a658e89525aeee56ef6e41a5b1a93964a07
         o.printData("Modell: ");
         String transportmodell = getScanner().nextLine();
         o.printData("Betreiber: ");
@@ -203,6 +209,7 @@ public class ZugController {
         int transportwagonzahl = Integer.parseInt(transportwagonzahl_string);
         o.printData("Zulassungsdatum: ");
         String transportzulassungsdatum_string = getScanner().nextLine();
+<<<<<<< HEAD
         Date transportzulassungdatum = format.parse(transportzulassungsdatum_string);
         o.printData("Langstreckenzulassung (ja=true): ");
         String transportlangstreckenzulassung_string = getScanner().nextLine();
@@ -217,6 +224,47 @@ public class ZugController {
         zug.add(newtransportzug);
         o.printData("Transportzug wurde erstellt!");
     }
+=======
+        Date transportzulassungsdatum = format.parse(transportzulassungsdatum_string);
+        o.printData("Langstreckenzulassung: ");
+        String transportlangstreckenzulassung_string = getScanner().nextLine();
+        Boolean transportlangstreckenzulassung = Boolean.parseBoolean(transportlangstreckenzulassung_string);
+        o.printData("Umweltbelastung: ");
+        String transportumweltbelastung = getScanner().nextLine();
+        o.printData("Maximalgewicht in KG");
+        String transportmaxgewichtinkg_string = getScanner().nextLine();
+        double transportmaxgewichtinkg = Double.parseDouble(transportmaxgewichtinkg_string);
+
+        TransportZug newtransportzug = new TransportZug(transportmodell, transportbetreiber, transportdurchschnittsgeschwindigkeit, transportwagonzahl, transportzulassungsdatum, transportlangstreckenzulassung, transportumweltbelastung, transportmaxgewichtinkg);
+        transportzug.add(newtransportzug);
+        zug.add(newtransportzug);
+    }
+    // Lennard
+    public void createStandartPersonenZuege(){
+        o.printData("StandartPersonenzug erstellen: ");
+        o.printData("Modell: ");
+        String standardpersonenmodell = getScanner().nextLine();
+        o.printData("Betreiber: ");
+        String standardpersonenbetreiber = getScanner().nextLine();
+        o.printData("Durchschnittliche Kilometer in km/h: ");
+        String standardpersonendurchschnittsgeschwindigkeit_string = getScanner().nextLine();
+        double standardpersonendurchschnittsgeschwindigkeit = Double.parseDouble(standardpersonendurchschnittsgeschwindigkeit_string);
+        o.printData("Wagonzahl: ");
+        String standardpersonenwagonzahl_string = getScanner().nextLine();
+        int standardpersonenwagonzahl = Integer.parseInt(standardpersonenwagonzahl_string);
+        o.printData("Zulassungsdatum: ");
+        String standardpersonenzulassungsdatum_string = getScanner().nextLine();
+        Date standardpersonenzulassungsdatum = format.parse(standardpersonenzulassungsdatum_string);
+        o.printData("Maximale Anzahl an Passagieren: ");
+        String standardpersonenmaxpersonenladung_string = getScanner().nextLine();
+        int standardpersonenmaxpersonenladung = Integer.parseInt(standardpersonenmaxpersonenladung_string);
+
+        StandardPersonenZug newstandardpersonenzuege = new StandardPersonenZug(standardpersonenmodell, standardpersonenbetreiber, standardpersonendurchschnittsgeschwindigkeit, standardpersonenwagonzahl, standardpersonenzulassungsdatum, standardpersonenmaxpersonenladung);
+        standardpersonenzug.add(newstandardpersonenzuege);
+        zug.add(newstandardpersonenzuege);
+    }
+
+>>>>>>> c3a19a658e89525aeee56ef6e41a5b1a93964a07
 
     //Setter & Getter
     public void setHochgeschwindigkeitszug(ArrayList<HochgeschwindigkeitsZug> hochgeschwindigkeitszug) {
