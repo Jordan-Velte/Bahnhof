@@ -78,7 +78,7 @@ public class ZuglinieController {
         int lokfuehrerindex = Integer.valueOf(lokfuehrerchoice);
         Lokfuehrer zuglinielokfuehrer = getMc().getPc().getLokfuehrer().get(lokfuehrerindex);
 
-        o.printData("Personal (wenn fertig: abbruch): ");
+        o.printData("Personal (abbruch: nein): ");
         int i3=0;
         for(Personal personal : getMc().getPc().getPersonal()){
             if(personal!=null){
@@ -90,7 +90,10 @@ public class ZuglinieController {
         int personalchoice = Integer.valueOf(personalchoice_string);
         ArrayList<Personal> personalal = new ArrayList<Personal>();
         personalal.add(getMc().getPc().getPersonal().get(personalchoice));
-        while(personalchoice_string!="abbruch"){
+        o.printData("Weiteres Personal (ja/nein)?");
+        String weiterfrage = getScanner().nextLine();
+
+        while(weiterfrage.equals("ja")){
             int i4 = 0;
             for(Personal personal : getMc().getPc().getPersonal()){
                 if(personal!=null){
@@ -101,42 +104,49 @@ public class ZuglinieController {
             String personalchoice_string_al = getScanner().nextLine();
             int personalindex_al = Integer.valueOf(personalchoice_string_al);
             personalal.add(getMc().getPc().getPersonal().get(personalindex_al));
+            o.printData("Weiteres Personal (ja/nein)?");
+            weiterfrage = getScanner().nextLine();
         }
-        if(personalchoice_string == "abbruch"){
-            o.printData("Bahnhöfe (wenn fertig: abbruch): ");
-            int i5=0;
-            for(Bahnhof bahnhof : getMc().getBc().getBahnhoefe()){
-                if(bahnhof!=null){
-                    o.printData(i5 + " - " + bahnhof.getName() + " " + bahnhof.getStandort());
-                    i5++;
-                }
-            }
-            String bahnhofchoice_string = getScanner().nextLine();
-            int bahnhofchoice = Integer.valueOf(bahnhofchoice_string);
-            ArrayList<Bahnhof> bahnhofal = new ArrayList<Bahnhof>();
-            bahnhofal.add(getMc().getBc().getBahnhoefe().get(bahnhofchoice));
-            while(bahnhofchoice_string!="abbruch"){
-                int i6 = 0;
-                for(Bahnhof bahnhof : getMc().getBc().getBahnhoefe()){
-                    if(bahnhof!=null){
-                        o.printData(i6+ " - " + bahnhof.getName() + " " + bahnhof.getStandort());
-                    }
-                    i6++;
-                }
-                String bahnhofchoice_string_al = getScanner().nextLine();
-                int bahnhofindex_al = Integer.valueOf(bahnhofchoice_string_al);
-                bahnhofal.add(getMc().getBc().getBahnhoefe().get(bahnhofindex_al));
-            }
-            if(bahnhofchoice_string=="abbruch"){
-                o.printData("Fahrtdatum: ");
-                String zugliniefahrtdatum_string = getScanner().nextLine();
-                Date zugliniefahrtdatum = format.parse(zugliniefahrtdatum_string);
-                Zuglinie newzuglinie = new Zuglinie(zugliniennummer, zugliniezug, zuglinielokfuehrer, personalal, bahnhofal, zugliniefahrtdatum);
-                zuglinie.add(newzuglinie);
-                o.printData("Zugline wurde erstellt!");
-            }
-            }
 
+        while(weiterfrage.equals("nein")){
+            o.printData("Bahnhöfe (abbruch: nein): ");
+            int i5=0;
+            for(Bahnhof bahnhof : getMc().getBc().getBahnhoefe()){
+                if(bahnhof!=null){
+                    o.printData(i5 + " - " + bahnhof.getName() + " " + bahnhof.getStandort());
+                    i5++;
+                }
+            }
+            String bahnhofchoice_string = getScanner().nextLine();
+            int bahnhofchoice = Integer.valueOf(bahnhofchoice_string);
+            ArrayList<Bahnhof> bahnhofal = new ArrayList<Bahnhof>();
+            bahnhofal.add(getMc().getBc().getBahnhoefe().get(bahnhofchoice));
+            o.printData("Weitere Bahnhöfe (ja/nein)?");
+            String weiterfrage2 = getScanner().nextLine();
+            while(weiterfrage2.equals("ja")){
+                int i6 = 0;
+                for(Bahnhof bahnhof : getMc().getBc().getBahnhoefe()){
+                    if(bahnhof!=null){
+                        o.printData(i6+ " - " + bahnhof.getName() + " " + bahnhof.getStandort());
+                    }
+                    i6++;
+                }
+                String bahnhofchoice_string_al = getScanner().nextLine();
+                int bahnhofindex_al = Integer.valueOf(bahnhofchoice_string_al);
+                bahnhofal.add(getMc().getBc().getBahnhoefe().get(bahnhofindex_al));
+                o.printData("Weitere Bahnhöfe (ja/nein)?");
+                weiterfrage2 = getScanner().nextLine();
+            }
+            while(weiterfrage2.equals("nein")){
+                o.printData("Fahrtdatum: ");
+                String zugliniefahrtdatum_string = getScanner().nextLine();
+                Date zugliniefahrtdatum = format.parse(zugliniefahrtdatum_string);
+                Zuglinie newzuglinie = new Zuglinie(zugliniennummer, zugliniezug, zuglinielokfuehrer, personalal, bahnhofal, zugliniefahrtdatum);
+                zuglinie.add(newzuglinie);
+                o.printData("Zugline wurde erstellt!");
+            }
+            }
+            /*
             o.printData("Bahnhöfe (wenn fertig: abbruch): ");
             int i5=0;
             for(Bahnhof bahnhof : getMc().getBc().getBahnhoefe()){
@@ -168,7 +178,8 @@ public class ZuglinieController {
                 Zuglinie newzuglinie = new Zuglinie(zugliniennummer, zugliniezug, zuglinielokfuehrer, personalal, bahnhofal, zugliniefahrtdatum);
                 zuglinie.add(newzuglinie);
                 o.printData("Zugline wurde erstellt!");
-            }  
+            } 
+            */
 
     }
 
