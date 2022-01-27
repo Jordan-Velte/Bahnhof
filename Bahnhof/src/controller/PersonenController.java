@@ -4,7 +4,7 @@ package controller;
 import model.*;
 import view.Output;
 import java.util.ArrayList;
-// Import für Datum
+//Import für Datum
 import java.util.Locale;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
@@ -65,6 +65,7 @@ public class PersonenController {
         lokfuehrerqualifikation1.add("hochgeschwindigkeit");
         //Initialisierung der Instanz durch Parameterübergabe --> siehe zudem Übergabe der initialisierten ArrayList in Hinblick auf die Lokführer-Qualifikation
         Lokfuehrer lf1 = new Lokfuehrer("Til", "Tetris", 201, lokfuehrerqualifikation1, format.parse("31.10.1990"));
+        //Gleiches Vorgehen: 
         ArrayList<String> lokfuehrerqualifikation2 = new ArrayList<String>();
         lokfuehrerqualifikation2.add("standardperson");
         Lokfuehrer lf2 = new Lokfuehrer("Fred", "Fischbein", 202, lokfuehrerqualifikation2, format.parse("29.05.1965"));
@@ -73,6 +74,7 @@ public class PersonenController {
         lokfuehrerqualifikation3.add("hochgeschwindigkeit");
         Lokfuehrer lf3 = new Lokfuehrer("Manuel", "Meckern", 203, lokfuehrerqualifikation3, format.parse("28.03.1972"));
         
+        //Hinzufügen der Lokführer-Instanzen in Lokführer-ArrayList
         lokfuehrer.add(lf1);
         lokfuehrer.add(lf2);
         lokfuehrer.add(lf3);

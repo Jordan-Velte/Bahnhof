@@ -1,14 +1,18 @@
 //JORDAN
 package controller;
 //IMPORTS
+//Import für den Zugriff auf Model-Klassen --> MVC Struktur: Controller = Schnittstelle von Model und View
 import model.*;
+//Import für ArrayList
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.Locale;
+//Import für Scanner
 import java.util.Scanner;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.text.ParseException;
+//Import view für Zugriff auf Output-Klasse (Ausgabe-Methode) --> MVC Struktur: Controller = Schnittstelle von Model und View
 import view.*;
 
 public class BuchungController {

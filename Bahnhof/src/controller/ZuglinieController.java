@@ -88,7 +88,7 @@ public class ZuglinieController {
         }
         String zugchoice = getScanner().nextLine();
         int zugindex = Integer.valueOf(zugchoice);
-        //Der in einen int umgewandelte Zugindex kann nun bei der Instanzerstellung für einen neuen Zug berücksichtigt werden. Somit wird das entsprechende Elemente in der ArrayList ausgwählt.
+        //Der in einen int umgewandelte Zugindex kann nun bei der Instanzerstellung für einen neuen Zug berücksichtigt werden. Somit wird das entsprechende Element in der ArrayList ausgewählt.
         Zug zugliniezug = getMc().getZc().getZug().get(zugindex);
         //Lokführer
         o.printData("Lokführer: ");
@@ -214,7 +214,7 @@ public class ZuglinieController {
         }
     }
 
-    //Überprüfung der Qualifikation der Lokführer: Standardpersonenzug
+    //Überprüfung der Qualifikation der Lokführer: Standardpersonenzug (gleiches Vorgehen)
     public void checkLokfuehrerQualifikationStandardPerson(){
         for(Zuglinie zuglinie : zuglinie){
             if((!zuglinie.getLokfuehrer().getQualifikation().contains("standardperson")) && zuglinie.getZug().getClass().getName() == "model.StandardPersonenZug"){

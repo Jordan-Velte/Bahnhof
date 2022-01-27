@@ -126,7 +126,7 @@ public class ZugController {
         }
     }
 
-    //DATENEINGABE-METHODE REINELEKTRISCH (Verfahren bereits beschrieben)
+    //DATENEINGABE-METHODE REINELEKTRISCH (Verfahren bereits in anderer Controller-Klasse beschrieben)
     public void createReinelektrischZuege() throws ParseException{
         o.printData("Reinelektrischen Zug erstellen: ");
         o.printData("Modell: ");

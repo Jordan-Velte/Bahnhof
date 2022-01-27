@@ -167,7 +167,7 @@ public class Menu {
             String weitereoptionchoice = getScanner().nextLine();
             o.printData("Ihre Auswahl ist: " + weitereoptionchoice);
             //Segmetierung der Bahnhofsgroesse! --> Bahnhof
-            if (weitereoptionchoice.equals("1")){
+            if(weitereoptionchoice.equals("1")){
                 o.printData("Segmentierung der Bahnhofsgrösse: ");
                 getMc().getBc().checkBahnhofgroesse();
             }

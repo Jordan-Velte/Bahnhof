@@ -14,7 +14,6 @@ public abstract class Person {
         setNachname(nachname);
     }
 
-
     // Setter und Getter
     public String getNachname() {
         return nachname;
