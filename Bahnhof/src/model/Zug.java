@@ -1,15 +1,20 @@
-//Jordan
+//JORDAN
 package model;
+//IMPORTS
 //Import für Datumwerte
 import java.util.Date;
+
 //Oberklasse
+//Abstrakte Klasse --> kein Element kann von der Oberklasse erstellt werden (macht im Sachkontext keinen Sinn)!
 public abstract class Zug {
+    //VARIABLENDEKLARATION
     String modell;
     String betreiber;
     double durchschnittsgeschwindigkeit;
     int wagonanzahl;
     Date zulassungsdatum;
 
+    //CONSTRUCTOR
     public Zug(String modell, String betreiber, double durchschnittsgeschwindigkeit, int wagonanzahl, Date zulassungsdatum){
         setBetreiber(betreiber);
         setModell(modell);
@@ -40,13 +45,13 @@ public abstract class Zug {
     public double getDurchschnittsgeschwindigkeit() {
         return durchschnittsgeschwindigkeit;
     }
-     public String getModell() {
-         return modell;
+    public String getModell() {
+        return modell;
      }
-     public int getWagonanzahl() {
-         return wagonanzahl;
-     }
-     public Date getZulassungsdatum() {
-         return zulassungsdatum;
-     }
+    public int getWagonanzahl() {
+        return wagonanzahl;
+    }
+    public Date getZulassungsdatum() {
+        return zulassungsdatum;
+    }
 }

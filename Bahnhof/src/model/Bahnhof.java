@@ -1,14 +1,17 @@
+//LENNARD
 package model;
+//IMPORTS
 import java.util.ArrayList;
 
-// Lennard
 public class Bahnhof {
 
+    //VARIABLENDEKLARATION
     String name;
     String standort;
+    //Da es mehrere Gleiskombination gibt: ArrayList für Gleis-Instanzen eines Bahnhofs!
     ArrayList<Gleis> gleiskombination = new ArrayList<Gleis>();
     
-
+    //CONSTRUCTOR
     public Bahnhof(String name, String standort, ArrayList<Gleis> gleiskombination){
         setName(name);
         setStandort(standort);

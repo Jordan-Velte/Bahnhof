@@ -1,15 +1,19 @@
+//LENNARD
 package model;
-
+//IMPORTS
 import java.util.ArrayList;
-// Lennard
 import java.util.Date;
 
+//Subklasse von Oberklasse Person
 public class Lokfuehrer extends Person{
- 
+    
+    //VARIABLENDEKLARATION
     int lokfuehrernummer;
+    //Mehrere Qualifikationen möglich!
     ArrayList<String> qualifikation = new ArrayList<String>();
     Date fuehrerzulassung;
 
+    //CONSTRUCTOR
     public Lokfuehrer(String vorname, String nachname, int lokfuehrernummer, ArrayList<String> qualifikation, Date fuehrerzulassung){
         super(vorname, nachname);
         setQualifikation(qualifikation);

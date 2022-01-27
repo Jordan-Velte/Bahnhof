@@ -1,10 +1,12 @@
-//Jordan
+//JORDAN, LENNARD
 package model;
+//IMPORTS
 import java.util.ArrayList;
 //Import für Datumwerte
 import java.util.Date;
 
 public class Zuglinie {
+    //VARIABLENDEKLARATION
     Lokfuehrer lokfuehrer;
     ArrayList<Personal> personal = new ArrayList<Personal>();
     ArrayList<Bahnhof> bahnhof = new ArrayList<Bahnhof>();
@@ -12,7 +14,7 @@ public class Zuglinie {
     int zugliniennummer;
     Date fahrtdatum;
 
-    //Bahnhöfe fehlen!
+    //CONSTRUCTOR
     public Zuglinie(int zugliniennummer, Zug zug, Lokfuehrer lokfuehrer, ArrayList<Personal> personal, ArrayList<Bahnhof> bahnhof, Date fahrtdatum){
         setLokfuehrer(lokfuehrer);
         setPersonal(personal);
@@ -22,6 +24,7 @@ public class Zuglinie {
         setBahnhof(bahnhof);
     }
 
+    //Setter und Getter
     public void setLokfuehrer(Lokfuehrer lokfuehrer) {
         this.lokfuehrer = lokfuehrer;
     }

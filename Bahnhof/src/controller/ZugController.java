@@ -1,5 +1,6 @@
-//Jordan
+//JORDAN
 package controller;
+//IMPORTS
 import model.*;
 import java.util.ArrayList;
 import java.util.Date;
@@ -12,27 +13,36 @@ import java.text.SimpleDateFormat;
 import view.*;
 
 public class ZugController {
+    //VARIABLENDEKLARATION
     MainController mc;
     ArrayList<Zug> zug;
     ArrayList<HochgeschwindigkeitsZug> hochgeschwindigkeitszug;
     ArrayList<TransportZug> transportzug;
     ArrayList<ReinelektrischZug> reinelektrischzug;
     ArrayList<StandardPersonenZug> standardpersonenzug;
+    //Notwendig für Interaktion mit dem Terminal (siehe create-Methode)
     Scanner scanner;
     //Formatfestlegung für die Datumsvariablen. Das Datum orientiert sich an dem deutschen Standard --> Per Punktnotation an jener Instanz können nun über die parse-Methode Strings übergeben werden, welche sich an diesem definierten Datumsformat orientieren.
     DateFormat format = new SimpleDateFormat("dd.MM.yyyy", Locale.GERMAN);
+    //Output-Instanz --> Zugriff auf printData-Methodik über Punktnotation
     Output o = new Output();
 
+    //CONSTRUCTOR
+    //Übergabe des MainControllers --> Über Punktnotation somit Zugriff auf andere Klassen!
     public ZugController(MainController mc){
+        //Initialisierung der respektiven ArrayLists
         zug = new ArrayList<Zug>();
         hochgeschwindigkeitszug = new ArrayList<HochgeschwindigkeitsZug>();
         transportzug = new ArrayList<TransportZug>();
         reinelektrischzug = new ArrayList<ReinelektrischZug>();
         standardpersonenzug = new ArrayList<StandardPersonenZug>();
+        //Setter für den Scanner, notwendig für Eingabe übers Terminal
         this.setScanner(new Scanner(System.in));
     }
 
+    //DEMODATEN
     public void createDemoDaten() throws ParseException{
+        //Initialisierung der einzelnen Instanzen der Zug-Subklassen
         HochgeschwindigkeitsZug hz1 = new HochgeschwindigkeitsZug("Shinkansen 300X", "Central Japan Railway Company", 350, 6, format.parse("01.02.1992"), 20000000);
         HochgeschwindigkeitsZug hz2 = new HochgeschwindigkeitsZug("ICE 3", "Deutsche Bahn", 300, 8, format.parse("09.07.1999"), 33000000);
         StandardPersonenZug spz1 = new StandardPersonenZug("Intercity 1", "Deutsche Bahn", 200, 8, format.parse("26.09.1971"), 703);
@@ -42,6 +52,7 @@ public class ZugController {
         ReinelektrischZug rz1 = new ReinelektrischZug("Siemens ACS-64", "Amtrak", 200, 10, format.parse("07.02.2014"), "4 Drehstrom-Asynchronmotoren", 30);
         ReinelektrischZug rz2 = new ReinelektrischZug("Bombardier ALP-64", "New Jersey Transit", 200, 10, format.parse("01.12.1999"), "4 Drehstrom-Asynchronmotoren", 30);
         
+        //Hinzufügen der Subklassen-Instanzen in Subklassen-ArrayList
         reinelektrischzug.add(rz1);
         reinelektrischzug.add(rz1);
         hochgeschwindigkeitszug.add(hz1);
@@ -50,6 +61,7 @@ public class ZugController {
         standardpersonenzug.add(spz2);
         transportzug.add(tz1);
         transportzug.add(tz2);
+        //Hinzufügen der Subklassen-Instanzen in Oberklassen-ArrayList
         zug.add(rz1);
         zug.add(rz2);
         zug.add(hz1);
@@ -62,7 +74,7 @@ public class ZugController {
        
     }
 
-    //PrintOutZüge (alle)
+    //DATENAUSGABE OBERKLASSE
     public void printOutZuege(){
         for(Zug zug : zug){
             if(zug!=null){
@@ -71,7 +83,7 @@ public class ZugController {
         }
     }
 
-    //Reinelektrisch
+    //DATENAUSGABE: SUBKLASSE (Reinelektrisch)
     public void printOutReinelektrischZuege(){
         for(ReinelektrischZug reinelektrischzug : reinelektrischzug){
             if(reinelektrischzug!=null){
@@ -80,7 +92,7 @@ public class ZugController {
         }
     }
 
-    //Hochgeschwindigkeit
+    //DATENAUSGABE: SUBKLASSE (Hochgeschwindigkeit)
     public void printOutHochgeschwindigkeitsZuege(){
         for(HochgeschwindigkeitsZug hochgeschwindigkeitszug : hochgeschwindigkeitszug){
             if(hochgeschwindigkeitszug!=null){
@@ -89,7 +101,7 @@ public class ZugController {
         }
     }
 
-    //Standardpersonenzug
+    //DATENAUSGABE: SUBKLASSE (Standardperson)
     public void printOutStandardPersonenZuege(){
         for(StandardPersonenZug standardpersonenzug : standardpersonenzug){
             if(standardpersonenzug!=null){
@@ -98,13 +110,15 @@ public class ZugController {
         }
     }
 
-    //Transportzug
+    //DATENAUSGABE: SUBKLASSE (Transport)
     public void printOutTransportZuege(){
         for(TransportZug transportzug : transportzug){
             if(transportzug!=null){
+                //Wenn Langstreckenzulassung boolean gleich true, dann wird dies entsprechend als zusätzlicher String kennbar gemacht in der Ausgabe über print-Data --> Langstreckenzulassung erteilt!
                 if(transportzug.getLangstreckenzulassung() == true){
                     o.printData("Betreiber: " + transportzug.getBetreiber() + "; Modell: " + transportzug.getModell() + "; Wagonzahl: " + transportzug.getWagonanzahl() + "; Durchschnittsgeschwindigkeit: " + transportzug.getDurchschnittsgeschwindigkeit() + "km/h; Zulassungsdatum: " + transportzug.getZulassungsdatum() + ", Umweltbelastung: " + transportzug.getUmweltbelastung() + "; Maximales Gesamtgewicht: " + transportzug.getMaxgesamtgewichtinkg()/1000 + " Tonnen; " + "Langstreckenzulassung: erteilt");  
                 }
+                ////Wenn Langstreckenzulassung boolean ungleich true, dann wird dies entsprechend als zusätzlicher String kennbar gemacht in der Ausgabe über print-Data --> Langstreckenzulassung nicht erteilt!
                 else if(transportzug.getLangstreckenzulassung() != true){
                     o.printData("Betreiber: " + transportzug.getBetreiber() + "; Modell: " + transportzug.getModell() + "; Wagonzahl: " + transportzug.getWagonanzahl() + "; Durchschnittsgeschwindigkeit: " + transportzug.getDurchschnittsgeschwindigkeit() + "km/h; Zulassungsdatum: " + transportzug.getZulassungsdatum() + ", Umweltbelastung: " + transportzug.getUmweltbelastung() + "; Maximales Gesamtgewicht: " + transportzug.getMaxgesamtgewichtinkg()/1000 + " Tonnen; " + "Langstreckenzulassung: nicht erteilt");  
                 }
@@ -112,8 +126,7 @@ public class ZugController {
         }
     }
 
-    //Create Zuege: 
-    //create Reinelektrischzuege
+    //DATENEINGABE-METHODE REINELEKTRISCH (Verfahren bereits beschrieben)
     public void createReinelektrischZuege() throws ParseException{
         o.printData("Reinelektrischen Zug erstellen: ");
         o.printData("Modell: ");
@@ -122,6 +135,7 @@ public class ZugController {
         String reinelektrischbetreiber = getScanner().nextLine();
         o.printData("Durchschnittliche Kilometer in km/h: ");
         String reinelektrischdurchschnittsgeschwindigkeit_string = getScanner().nextLine();
+        //Uwandlung String --> Double
         double reinelektrischdurchschnittsgeschwindigkeit = Double.parseDouble(reinelektrischdurchschnittsgeschwindigkeit_string);
         o.printData("Wagonzahl: ");
         String reinelektrischwagonzahl_string = getScanner().nextLine();
@@ -135,11 +149,14 @@ public class ZugController {
         String reinelektrischbatterielebensdauer_string = getScanner().nextLine();
         double reinelektrischbatterielebensdauer = Double.parseDouble(reinelektrischbatterielebensdauer_string);
         ReinelektrischZug newreinelektrischzug = new ReinelektrischZug(reinelektrischmodell, reinelektrischbetreiber, reinelektrischdurchschnittsgeschwindigkeit, reinelektrischwagonzahl, reinelektrischzulassungdatum, reinelektrischenergieversorgung, reinelektrischbatterielebensdauer);
+        //Hinzufügen in Subklassen-ArrayList
         reinelektrischzug.add(newreinelektrischzug);
+        //Hinzufügen in Oberklassen-ArrayList
         zug.add(newreinelektrischzug);
         o.printData("Reinelektrischer Zug wurde erstellt!");
     }
 
+    //DATENEINGABE-METHODE HOCHGESCHWINDIGKEIT
     public void createHochgeschwindigkeitsZuege() throws ParseException{
         o.printData("Hochgeschwindigkeitszug erstellen: ");
         o.printData("Modell: ");
@@ -164,6 +181,7 @@ public class ZugController {
         o.printData("Hochgeschwindigkeitszug wurde erstellt!");
     }
 
+    //DATENEINGABE-METHODE STANDARDPERSON
     public void createStandardpersonenZuege() throws ParseException{
         o.printData("Standardpersonenzug erstellen: ");
         o.printData("Modell: ");
@@ -189,6 +207,7 @@ public class ZugController {
 
     }
 
+    //DATENEINGABE-METHODE TRANSPORT
     public void createTransportZuege() throws ParseException{
         o.printData("Transport erstellen: ");
         o.printData("Modell: ");
@@ -204,8 +223,10 @@ public class ZugController {
         o.printData("Zulassungsdatum: ");
         String transportzulassungsdatum_string = getScanner().nextLine();
         Date transportzulassungdatum = format.parse(transportzulassungsdatum_string);
+        //Weil folgende Umwandlung von String zu booelan: ja=true
         o.printData("Langstreckenzulassung (ja=true): ");
         String transportlangstreckenzulassung_string = getScanner().nextLine();
+        //String zu boolean
         boolean transportlangstreckenzulassung = Boolean.valueOf(transportlangstreckenzulassung_string);
         o.printData("Umweltbelastung (stark/normal/wenig): ");
         String transportumweltbelastung = getScanner().nextLine();

@@ -1,17 +1,19 @@
+//LENNARD
 package model;
 
-// Lennard
 public class Gleis {
     
+    //VARIABLENDEKLARATION
     String name;
     boolean besetzung;
 
+    //CONSTRUCTOR
     public Gleis(String name, boolean besetzung){
         setBesetzung(besetzung);
         setName(name);
     }
 
-
+    //Boolean für Besetzung der Gleise (siehe Variablendeklaration)
     public boolean gleisbesetzung(){
         boolean frei=true;
         if(frei){

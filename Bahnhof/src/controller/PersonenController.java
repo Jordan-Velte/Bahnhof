@@ -1,46 +1,47 @@
+//LENNARD
 package controller;
-
+//IMPORTS
 import model.*;
 import view.Output;
-
 import java.util.ArrayList;
 // Import für Datum
 import java.util.Locale;
-
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.text.ParseException;
 import java.util.Scanner;
 import java.util.Date;
-
 import java.util.List;
 import java.util.Arrays;
-//Lennard
 
 public class PersonenController {
-    
+    //VARIABLENDEKLARATION
     MainController mc;
     ArrayList<Person> personen;
     ArrayList<Lokfuehrer> lokfuehrer;
     ArrayList<Passagier> passagiere;
     ArrayList<Personal> personal;
+    //Notwendig für Interaktion mit dem Terminal (siehe create-Methode)
     Scanner scanner;
+    //Output-Instanz --> Zugriff auf printData-Methodik über Punktnotation
     Output o = new Output();
 
     DateFormat format = new SimpleDateFormat("dd.MM.yyyy", Locale.GERMAN);
 
+    //CONSTRUCTOR
+    //Übergabe des MainControllers --> Über Punktnotation somit Zugriff auf andere Klassen!
     public PersonenController(MainController mc){
         setMc(mc);
         personen = new ArrayList<Person>();
         lokfuehrer = new ArrayList<Lokfuehrer>();
         passagiere = new ArrayList<Passagier>();
         personal = new ArrayList<Personal>();
+        //Setter für den Scanner, notwendig für Eingabe übers Terminal
         this.setScanner(new Scanner(System.in));
     }
-
-
+    //DEMODATEN
     public void createDemoDaten() throws ParseException{
-
+        //Initialisierung der Instanzen der Subklassen, sowie Hinzufügen in Subklassen-ArrayList über Punktnotation
         Passagier pa1 = new Passagier("Bernd", "Barbar", 01);
         Passagier pa2 = new Passagier("Peter", "Klaus", 02); 
         Passagier pa3 = new Passagier("Klaus", "Kleber", 03);
@@ -56,10 +57,13 @@ public class PersonenController {
 
         //Lokführer Qualifikation
         //Optionen: reinelektrisch, standardperson, hochgeschwindigkeit, transport
+        //ArrayList für unterschiedliche Lokführerqualifikation-Strings
         ArrayList<String> lokfuehrerqualifikation1 = new ArrayList<String>();
+        //Übergabe einzelner Strings in ArrayList
         lokfuehrerqualifikation1.add("reinelektrisch");
         lokfuehrerqualifikation1.add("standardperson");
         lokfuehrerqualifikation1.add("hochgeschwindigkeit");
+        //Initialisierung der Instanz durch Parameterübergabe --> siehe zudem Übergabe der initialisierten ArrayList in Hinblick auf die Lokführer-Qualifikation
         Lokfuehrer lf1 = new Lokfuehrer("Til", "Tetris", 201, lokfuehrerqualifikation1, format.parse("31.10.1990"));
         ArrayList<String> lokfuehrerqualifikation2 = new ArrayList<String>();
         lokfuehrerqualifikation2.add("standardperson");
@@ -73,6 +77,7 @@ public class PersonenController {
         lokfuehrer.add(lf2);
         lokfuehrer.add(lf3);
 
+        //Hinzufügen der Instanzen der Subklassen in Oberklassen-ArrayList
         personen.add(pa1);
         personen.add(pa2);
         personen.add(pa3);
@@ -86,8 +91,7 @@ public class PersonenController {
 
     }
 
-    //Jordan
-    //Personen printOut
+    //DATENAUSGABE PERSONEN
     public void printOutPersonen(){
         for(Person person : personen){
             if(person!=null){
@@ -96,6 +100,7 @@ public class PersonenController {
         }
     }
     
+    //DATENAUSGABE LOKFÜHRER
     public void printOutLokfuehrer(){
         for(Lokfuehrer lokfuehrer : lokfuehrer){
             if(lokfuehrer!=null){
@@ -104,6 +109,7 @@ public class PersonenController {
         }
     }
     
+    //DATENAUSGABE PASSAGIERE
     public void printOutPassagiere(){
         for(Passagier passagier : passagiere){
             if(passagier!=null){
@@ -112,6 +118,7 @@ public class PersonenController {
         }
     }
 
+    //DATENAUSGABE PERSONAL
     public void printOutPersonal(){
         for(Personal personal : personal){
             if(personal!=null){
@@ -121,8 +128,8 @@ public class PersonenController {
         }
     }
 
-    //CREATE-METHODEN
-    //createPersonen
+    //CREATE-METHODEN --> Abstrakte Oberklasse kann keine Instanzen erstellen!
+    //DATENEINGABE PASSAGIER (Vorgehen bereits erklärt)
     public void createPassagier(){
         o.printData("Passagier erstellen");
         o.printData("Vorname: ");
@@ -139,6 +146,7 @@ public class PersonenController {
 
     }
 
+    //DATENEINGABE PERSONAL
     public void createPersonal(){
         o.printData("Personal erstellen");
         o.printData("Vorname: ");
@@ -154,6 +162,7 @@ public class PersonenController {
         o.printData("Personal wurde erstellt!");
     }
 
+    //DATENEINGABE LOKFÜHRER
     public void createLokfuehrer() throws ParseException{
         o.printData("Lokführer erstellen");
         o.printData("Vorname: ");
@@ -163,12 +172,14 @@ public class PersonenController {
         o.printData("Lokfuehrernummer: ");
         String lokfuehrernummer_string = getScanner().nextLine();
         int lokfuehrernummer = Integer.parseInt(lokfuehrernummer_string);
+        //Durch Kommata werden die einzelnen Qualifikationen-Strings getrennt und in einer ArrayList zusammengefasst: 
         o.printData("Qualifikation (zur Auswahl stehen: reinelektrisch, standardperson, hochgeschwindigkeit und transport; wenn Anzahl>1: Kommata!): ");
         String lokfuehrerqualifikationstring = getScanner().nextLine();
-        //Convert comma separate String to array of String
+        //Umwandlung von Strings, die durch Kommata separiert sind, zu einem Array von Strings
         String[] loksplit = lokfuehrerqualifikationstring.split(",");
-        //Convert String array to list of String
+        //Umwandlung des String Arrays zu einer Liste!
         List<String> fixedqualilist = Arrays.asList(loksplit);
+        //Neue String-ArrayList für die Qualifikation eines Lokführers --> Parameterübergabe: Liste!
         ArrayList<String> lokfuehrerqualifikation = new ArrayList<String>(fixedqualilist);
         o.printData("Zulassung (Datum): ");
         String lokfuehrerzulassung_string = getScanner().nextLine();
@@ -179,8 +190,52 @@ public class PersonenController {
         o.printData("Lokführer wurde erstellt!");
 
         lokfuehrer.add(new Lokfuehrer(lokfuehrervorname, lokfuehrernachname, lokfuehrernummer, lokfuehrerqualifikation, lokfuehrerzulassung));
-        
+    }
 
+
+
+    
+    // Setter und Getter
+    public MainController getMc() {
+        return mc;
+    }
+    public void setMc(MainController mc) {
+        this.mc = mc;
+    }
+    public void setScanner(Scanner scanner) {
+        this.scanner = scanner;
+    }
+    public Scanner getScanner() {
+        return scanner;
+    }
+    public ArrayList<Person> getPersonen() {
+        return personen;
+    }
+    public void setPersonen(ArrayList<Person> personen) {
+        this.personen = personen;
+    }
+    public ArrayList<Lokfuehrer> getLokfuehrer() {
+        return lokfuehrer;
+    }
+    public void setLokfuehrer(ArrayList<Lokfuehrer> lokfuehrer) {
+        this.lokfuehrer = lokfuehrer;
+    }
+    public ArrayList<Passagier> getPassagiere() {
+        return passagiere;
+    }
+    public void setPassagiere(ArrayList<Passagier> passagiere) {
+        this.passagiere = passagiere;
+    }
+    public ArrayList<Personal> getPersonal() {
+        return personal;
+    }
+    public void setPersonal(ArrayList<Personal> personal) {
+        this.personal = personal;
+    }
+
+}
+
+//CODE GRAVEYARD
         /*
         // 1. EIngabe für die Qualifikation
 
@@ -190,12 +245,7 @@ public class PersonenController {
 
         ArrayList<String> quali = new ArrayList<>();
         quali.add(q);*/
-        
-
-        
-    }
     /*
-    // Lennard
     public void createPassagiere(){
         o.printData("Passagier erstellen");
         o.printData("Vorname: ");
@@ -258,131 +308,3 @@ public class PersonenController {
         }
     }
     */
-
-    
-    // Setter und Getter
-    public MainController getMc() {
-        return mc;
-    }
-
-    public void setMc(MainController mc) {
-        this.mc = mc;
-    }
-
-    public void setScanner(Scanner scanner) {
-        this.scanner = scanner;
-    }
-    public Scanner getScanner() {
-        return scanner;
-    }
-
-
-    public ArrayList<Person> getPersonen() {
-        return personen;
-    }
-
-    public void setPersonen(ArrayList<Person> personen) {
-        this.personen = personen;
-    }
-
-    public ArrayList<Lokfuehrer> getLokfuehrer() {
-        return lokfuehrer;
-    }
-    
-    public void setLokfuehrer(ArrayList<Lokfuehrer> lokfuehrer) {
-        this.lokfuehrer = lokfuehrer;
-    }
-
-    public ArrayList<Passagier> getPassagiere() {
-        return passagiere;
-    }
-
-    public void setPassagiere(ArrayList<Passagier> passagiere) {
-        this.passagiere = passagiere;
-    }
-
-    public ArrayList<Personal> getPersonal() {
-        return personal;
-    }
-
-    public void setPersonal(ArrayList<Personal> personal) {
-        this.personal = personal;
-    }
-
-}
-
-
-/*
-//DATUM CODE
-package controller;
-//Import model --> Für Zugriff auf Model-Klassen
-import model.*;
-//Import view --> Für Ausgabe
-import view.*;
-//Import für ArrayList
-import java.util.ArrayList;
-//Mehrere Imports für Datum/Standort!
-import java.util.Locale;
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
-
-public class KlassenfahrtController {
-    //Erstellung einer Instanz der Klasse Output, um an jenem per Punktnotation die Ausgabemethode (printData) aufrufen zu können
-    Output o = new Output();
-    //Instanz mc der Klasse MainController
-    MainController mc;
-    //ArrayList für mehrere Instanzen der Klasse Klassenfahrt
-    ArrayList<Klassenfahrt> klassenfahrt = new ArrayList<Klassenfahrt>();
-    //Formatfestlegung für die Datumsvariablen. Das Datum orientiert sich an dem deutschen Standard --> Per Punktnotation an jener Instanz können nun über die parse-Methode Strings übergeben werden, welche sich an diesem definierten Datumsformat orientieren.
-    DateFormat format = new SimpleDateFormat("dd.MM.yyyy", Locale.GERMAN);
-
-    //Constructor --> Übergabe der MainController-Instanz!
-    public KlassenfahrtController(MainController mc){
-        setKlassenfahrt(klassenfahrt);
-        setMc(mc);
-    }
-
-    //Methode für die Erstellung der entsprechenden Lehrer-Arrays und Klassenfahrten
-    public void createKlassenfahrtData() throws ParseException{
-        //Zunächst werden ArrayLists erstellt, die unterschiedliche Kombination von Lehrern abbilden (siehe lehrer1, lehrer2, etc.). Folglich werden in diese Arrays die respektiven Lehrer Instanzen aus der Lehrer-ArrayLists (siehe Lehrer-Controller) jeweils hinzugefügt über einen Parameterübergabe bezogen auf die add-Methode. Hierbei ist zu beachten, dass per Punktnotation an dem MainController zunächst der Lehrer-Controller aufgerufen wird, der dann auf die einzelnen Lehrer-Instanzen zugreifen kann.
-        //Herr Odens und Herr Trampe
-        ArrayList<Lehrer> lehrer1 = new ArrayList<Lehrer>();
-        lehrer1.add(getMc().getLec().getLehrer().get(0));
-        lehrer1.add(getMc().getLec().getLehrer().get(1));
-
-        //Herr Odens und Herr Simsky
-        ArrayList<Lehrer> lehrer2 = new ArrayList<Lehrer>();
-        lehrer2.add(getMc().getLec().getLehrer().get(0));
-        lehrer2.add(getMc().getLec().getLehrer().get(2));
-
-        //Herr Trampe und Herr Simsky
-        ArrayList<Lehrer> lehrer3 = new ArrayList<Lehrer>();
-        lehrer3.add(getMc().getLec().getLehrer().get(1));
-        lehrer3.add(getMc().getLec().getLehrer().get(2));
-
-        //Nur Herr Trampe
-        ArrayList<Lehrer> lehrer4 = new ArrayList<Lehrer>();
-        lehrer4.add(getMc().getLec().getLehrer().get(0));
-
-        //Erstellung der Klassenfahrt-Instanzen --> Hier wird erneut über die Punktnotation vorgegangen (siehe MainController und jeweils die Controller der benötigten Klassen)! Es sind alle Möglichkeiten an den jeweiligen Instanzen gegeben.
-        //Nur ein Lehrer --> fail
-        Klassenfahrt kl1 = new Klassenfahrt(getMc().getRec().getReiseziel().get(0), lehrer4,getMc().getKlc().getKlasse().get(0), format.parse("17.01.2022"), format.parse("21.01.2022"));
-        //Nicht beide Lehrer haben Erlaubnis --> fail
-        Klassenfahrt kl2 = new Klassenfahrt(getMc().getRec().getReiseziel().get(1), lehrer2,getMc().getKlc().getKlasse().get(1), format.parse("06.06.2022"), format.parse("10.06.2022"));
-        //Zu Teuer für die Schüler --> fail 
-        Klassenfahrt kl3 = new Klassenfahrt(getMc().getRec().getReiseziel().get(2), lehrer2,getMc().getKlc().getKlasse().get(2), format.parse("07.02.2022"), format.parse("11.02.2022"));
-        //Schüler erfüllen nicht Mindestalter --> fail
-        Klassenfahrt kl4 = new Klassenfahrt(getMc().getRec().getReiseziel().get(3), lehrer1,getMc().getKlc().getKlasse().get(3), format.parse("20.12.2021"), format.parse("24.12.2021"));
-        //Alle Bedingungen sind erfüllt --> Klassenfahrt genehmigt!
-        Klassenfahrt kl5 = new Klassenfahrt(getMc().getRec().getReiseziel().get(4), lehrer1,getMc().getKlc().getKlasse().get(4), format.parse("27.12.2021"), format.parse("31.12.2021"));
-
-        //Hinzufügen der Instanzen zu einer entsprechenden ArrayList über Punktnotation (siehe add-Methode)
-        klassenfahrt.add(kl1);
-        klassenfahrt.add(kl2);
-        klassenfahrt.add(kl3);
-        klassenfahrt.add(kl4);
-        klassenfahrt.add(kl5);
-    }
-
-*/

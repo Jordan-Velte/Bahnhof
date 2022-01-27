@@ -1,14 +1,18 @@
-//Jordan
+//JORDAN
 package model;
+//IMPORTS
 //Import für Datumwerte
 import java.util.Date;
 
+//Subklasse von Oberklasse Zug
 public class TransportZug extends Zug{
+    //VARIABLENDEKLARATION
     boolean langstreckenzulassung;
     String umweltbelastung;
     //In KG
     double maxgesamtgewichtinkg;
 
+    //CONSTRUCTOR
     public TransportZug(String modell, String betreiber, double durchschnittsgeschwindigkeit, int wagonanzahl, Date zulassungsdatum, boolean langstreckenzulassung, String umweltbelastung, double maxgesamtgewichtinkg){
         super(modell, betreiber, durchschnittsgeschwindigkeit, wagonanzahl, zulassungsdatum);
         setLangstreckenzulassung(langstreckenzulassung);
@@ -16,6 +20,7 @@ public class TransportZug extends Zug{
         setUmweltbelastung(umweltbelastung);
     }
 
+    //Setter und Getter
     public void setLangstreckenzulassung(boolean langstreckenzulassung) {
         this.langstreckenzulassung = langstreckenzulassung;
     }

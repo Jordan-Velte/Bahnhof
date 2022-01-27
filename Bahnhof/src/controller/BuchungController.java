@@ -1,5 +1,6 @@
-//Jordan
+//JORDAN
 package controller;
+//IMPORTS
 import model.*;
 import java.util.ArrayList;
 import java.util.Date;
@@ -11,25 +12,35 @@ import java.text.ParseException;
 import view.*;
 
 public class BuchungController {
+    //VARIABLENDEKLARATION
     MainController mc;
     ArrayList<Buchung> buchung = new ArrayList<Buchung>();
     DateFormat format = new SimpleDateFormat("dd.MM.yyyy", Locale.GERMAN);
+    //Output-Instanz --> Zugriff auf printData-Methodik über Punktnotation
     Output o = new Output();
+    //Notwendig für Interaktion mit dem Terminal (siehe create-Methode)
     Scanner scanner; 
 
+    //CONSTRUCTOR
+    //Übergabe des MainControllers --> Über Punktnotation somit Zugriff auf andere Klassen!
     public BuchungController(MainController mc){
         setBuchung(buchung);
         setMc(mc);
+        //Setter für den Scanner, notwendig für Eingabe übers Terminal
         this.setScanner(new Scanner(System.in));
     }
+
+    //DEMODATEN
     public void createDemoDaten() throws ParseException{
+        //Initialisierung von Buchungs-Instanzen --> Punktnotation per MainController-Getter (siehe MVC-Struktur)
         Buchung b1 = new Buchung(1, getMc().getZlc().getZuglinie().get(0), getMc().getPc().getPassagiere().get(0), 68.9, format.parse("1.1.2022"));
         Buchung b2 = new Buchung(2, getMc().getZlc().getZuglinie().get(1), getMc().getPc().getPassagiere().get(1), 100.9, format.parse("8.1.2022"));
+        //Hinzufügen der Buchungs-Instanzen in eine ArrayList
         buchung.add(b1);
         buchung.add(b2);
     }
 
-    //Jordan
+    //DATENAUSGABE BUCHUNG
     public void printOutBuchung(){
         for(Buchung buchung : buchung){
             if(buchung!=null){
@@ -38,6 +49,7 @@ public class BuchungController {
         }
     }
 
+    //DATENEINGABE BUCHUNG (Vorgehen bereits in anderen Controller-Klassen aufgeführt)
     public void createBuchung() throws ParseException{
         o.printData("Buchung erstellen");
         o.printData("Buchungsnummer: ");
@@ -75,7 +87,65 @@ public class BuchungController {
         buchung.add(newbuchung);
         o.printData("Buchung erstellt!");
 
-        /*
+    }
+
+    //ÜBERPRÜFUNGS-METHODE: Kategorisierung des Buchungspreises 
+    public void checkBuchungPreis(){
+        //For-Each-Schleife iteriert durch alle Elemente der Buchung-ArrayList
+        for(Buchung buchung : buchung){
+            //Sofern das Element Buchung ungleich null und dessen Preis kleiner gleich 50 --> Preiskategorie GÜNSTIG50TARIF
+            if(buchung!=null && buchung.getPreis()<=50){
+                o.printData("Die Buchung der Buchungsnummer " + buchung.getBuchungsnummer() + " des Passagiers " + buchung.getPassagier().getVorname() + " " + buchung.getPassagier().getNachname() + " ist der Preiskategorie GÜNSTIG50TARIF zuzordnen.");
+            }
+            //Sofern das Element Buchung ungleich null und dessen Preis größer 50 und kleiner gleich 150 --> Preiskategorie sTANDARDTARIF
+            else if(buchung!=null && buchung.getPreis()>50 && buchung.getPreis()<=150){
+                o.printData("Die Buchung der Buchungsnummer " + buchung.getBuchungsnummer() + " des Passagiers " + buchung.getPassagier().getVorname() + " " + buchung.getPassagier().getNachname() + " ist der Preiskategorie STANDARDTARIF zuzordnen.");
+            }
+            //Sofern das Element Buchung ungleich null und dessen Preis größer 150 --> Preiskategorie FULLFLEXTARIF
+            else if(buchung!=null && buchung.getPreis()>150){
+                o.printData("Die Buchung der Buchungsnummer " + buchung.getBuchungsnummer() + " des Passagiers " + buchung.getPassagier().getVorname() + " " + buchung.getPassagier().getNachname() + " ist der Preiskategorie FULLFLEXTARIF zuzordnen.");
+            }
+        }
+    }
+
+    
+    //Setter & Getter
+    public void setBuchung(ArrayList<Buchung> buchung) {
+        this.buchung = buchung;
+    }
+    public void setFormat(DateFormat format) {
+        this.format = format;
+    }
+    public void setMc(MainController mc) {
+        this.mc = mc;
+    }
+    public ArrayList<Buchung> getBuchung() {
+        return buchung;
+    }
+    public DateFormat getFormat() {
+        return format;
+    }
+    public MainController getMc() {
+        return mc;
+    }
+    public void setScanner(Scanner scanner) {
+        this.scanner = scanner;
+    }
+    public Output getO() {
+        return o;
+    }
+    public Scanner getScanner() {
+        return scanner;
+    }
+    public void setO(Output o) {
+        this.o = o;
+    }
+
+
+}
+
+//CODE GRAVEYARD
+/*
         for(Passagier passagier : getMc().getPc().getPassagiere()){
             if(passagier!=null){
                 o.printData(i2 + " - " + passagier.getVorname() + " " + passagier.getNachname());
@@ -126,55 +196,3 @@ public class BuchungController {
         String bahnhofankunft_choice = getScanner().nextLine();
         int bahnhofankunft_index = Integer.valueOf(bahnhofankunft_choice);
         */
-
-    }
-
-    public void checkBuchungPreis(){
-        for(Buchung buchung : buchung){
-            if(buchung!=null && buchung.getPreis()<=50){
-                o.printData("Die Buchung der Buchungsnummer " + buchung.getBuchungsnummer() + " des Passagiers " + buchung.getPassagier().getVorname() + " " + buchung.getPassagier().getNachname() + " ist der Preiskategorie GÜNSTIG50TARIF zuzordnen.");
-            }
-            else if(buchung!=null && buchung.getPreis()>50 && buchung.getPreis()<=150){
-                o.printData("Die Buchung der Buchungsnummer " + buchung.getBuchungsnummer() + " des Passagiers " + buchung.getPassagier().getVorname() + " " + buchung.getPassagier().getNachname() + " ist der Preiskategorie STANDARDTARIF zuzordnen.");
-            }
-            else if(buchung!=null && buchung.getPreis()<150){
-                o.printData("Die Buchung der Buchungsnummer " + buchung.getBuchungsnummer() + " des Passagiers " + buchung.getPassagier().getVorname() + " " + buchung.getPassagier().getNachname() + " ist der Preiskategorie FULLFLEXTARIF zuzordnen.");
-            }
-        }
-    }
-
-    
-
-    public void setBuchung(ArrayList<Buchung> buchung) {
-        this.buchung = buchung;
-    }
-    public void setFormat(DateFormat format) {
-        this.format = format;
-    }
-    public void setMc(MainController mc) {
-        this.mc = mc;
-    }
-    public ArrayList<Buchung> getBuchung() {
-        return buchung;
-    }
-    public DateFormat getFormat() {
-        return format;
-    }
-    public MainController getMc() {
-        return mc;
-    }
-    public void setScanner(Scanner scanner) {
-        this.scanner = scanner;
-    }
-    public Output getO() {
-        return o;
-    }
-    public Scanner getScanner() {
-        return scanner;
-    }
-    public void setO(Output o) {
-        this.o = o;
-    }
-
-
-}

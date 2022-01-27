@@ -1,16 +1,20 @@
-//Jordan
+//JORDAN
 package model;
+//IMPORTS
 //Import für Datumwerte
 import java.util.Date;
 
 public class Buchung {
+    //VARIABLENDEKLARATION
     Passagier passagier;
     Zuglinie zuglinie;
     int buchungsnummer;
+    //In Euro
     double preis;
     Date buchungsdatum;
     //ArrayList für ausgewählte Bahnhöfe!
 
+    //CONSTRUCTOR
     public Buchung(int buchungsnummer, Zuglinie zuglinie, Passagier passagier, double preis, Date buchungsdatum){
         setBuchungsnummer(buchungsnummer);
         setPassagier(passagier);

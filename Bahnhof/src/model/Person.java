@@ -1,11 +1,14 @@
+//LENNARD
 package model;
 
-// Lennard
+//Oberklasse für Lokfuehrer, Passagier und Personal!
+//Abstrakte Klasse --> kein Element kann von der Oberklasse erstellt werden (macht im Sachkontext keinen Sinn)!
 public abstract class Person {
-    
+    //VARIABLENDEKLARATION
     String vorname;
     String nachname;
 
+    //CONSTRUCTOR
     public Person(String vorname, String nachname){
         setVorname(vorname);
         setNachname(nachname);
@@ -13,7 +16,6 @@ public abstract class Person {
 
 
     // Setter und Getter
-
     public String getNachname() {
         return nachname;
     }
