@@ -123,7 +123,7 @@ public class ZuglinieController {
             bahnhofal.add(getMc().getBc().getBahnhoefe().get(bahnhofchoice));
             o.printData("Weitere Bahnhöfe (ja/nein)?");
             String weiterfrage2 = getScanner().nextLine();
-            while(weiterfrage2.equals("ja")){
+            if(weiterfrage2.equals("ja")){
                 int i6 = 0;
                 for(Bahnhof bahnhof : getMc().getBc().getBahnhoefe()){
                     if(bahnhof!=null){
@@ -144,6 +144,7 @@ public class ZuglinieController {
                 Zuglinie newzuglinie = new Zuglinie(zugliniennummer, zugliniezug, zuglinielokfuehrer, personalal, bahnhofal, zugliniefahrtdatum);
                 zuglinie.add(newzuglinie);
                 o.printData("Zugline wurde erstellt!");
+                break;
             }
             
             }

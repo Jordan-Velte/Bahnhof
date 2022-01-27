@@ -40,6 +40,17 @@ public class Menu {
                 o.printData("(4) Transportzüge");
                 String zugeingabechoice = getScanner().nextLine();
                 o.printData("Ihre Auswahl ist: " + zugeingabechoice);
+                
+                switch(zugeingabechoice){
+                    case "1": getMc().getZc().createReinelektrischZuege();
+                    break;
+                    case "2": getMc().getZc().createHochgeschwindigkeitsZuege();
+                    break;
+                    case "3": getMc().getZc().createStandardpersonenZuege();
+                    break;
+                    case "4": getMc().getZc().createTransportZuege();
+                }
+                /*
                 if(zugeingabechoice.equals("1")){
                     getMc().getZc().createReinelektrischZuege();
                 }
@@ -52,6 +63,7 @@ public class Menu {
                 else if(zugeingabechoice.equals("4")){
                     getMc().getZc().createTransportZuege();
                 }
+                */
             }
             else if(eingabechoice.equals("3")){
                 o.printData("Wählen Sie die Instanzen, die Sie ausgeben möchten:");
@@ -60,6 +72,14 @@ public class Menu {
                 o.printData("(3) Passagiere");
                 String personeingabechoice = getScanner().nextLine();
                 o.printData("Ihre Auswahl ist: " + personeingabechoice);
+                switch(personeingabechoice){
+                    case "1": getMc().getPc().createLokfuehrer();
+                    break;
+                    case "2": getMc().getPc().createPersonal();
+                    break;
+                    case "3": getMc().getPc().createPassagier();
+                }
+                /*
                 if(personeingabechoice.equals("1")){
                     getMc().getPc().createLokfuehrer();
                 }
@@ -69,6 +89,7 @@ public class Menu {
                 else if(personeingabechoice.equals("3")){
                     getMc().getPc().createPassagier();
                 }
+                */
                 
             }
             else if(eingabechoice.equals("4")){
@@ -99,6 +120,18 @@ public class Menu {
                 o.printData("(5) Alle dokumentierten Züge des Zugnetzwerkes");
                 String zugchoice = getScanner().nextLine();
                 o.printData("Ihre Auswahl ist " + zugchoice);
+                switch (zugchoice){
+                    case "1" : getMc().getZc().printOutReinelektrischZuege();
+                    break;
+                    case "2" : getMc().getZc().printOutHochgeschwindigkeitsZuege();
+                    break;
+                    case "3" : getMc().getZc().printOutStandardPersonenZuege();
+                    break;
+                    case "4" : getMc().getZc().printOutTransportZuege();
+                    break;
+                }
+
+                /*
                 if(zugchoice.equals("1")){
                     getMc().getZc().printOutReinelektrischZuege();
                 }
@@ -114,6 +147,7 @@ public class Menu {
                 else if(zugchoice.equals("5")){
                     getMc().getZc().printOutZuege();
                 }
+                */
             }
             else if(ausgabechoice.equals("3")){
                 o.printData("Wählen Sie die Instanzen, die Sie ausgeben möchten:");
@@ -123,6 +157,17 @@ public class Menu {
                 o.printData("(4) Alle dokumentierten Stakeholder des Zugnetzwerkes");
                 String personchoice = getScanner().nextLine();
                 o.printData("Ihre Auswahl ist: " + personchoice);
+                switch(personchoice){
+                    case "1": getMc().getPc().printOutLokfuehrer();
+                    break;
+                    case "2": getMc().getPc().printOutPersonal();
+                    break;
+                    case "3": getMc().getPc().printOutPassagiere();
+                    break;
+                    case "4": getMc().getPc().printOutPersonen();
+                    break;
+                }
+                /*
                 if(personchoice.equals("1")){
                     getMc().getPc().printOutLokfuehrer();
                 }
@@ -135,6 +180,7 @@ public class Menu {
                 else if(personchoice.equals("4")){
                     getMc().getPc().printOutPersonen();
                 }
+                */
             }
             else if(ausgabechoice.equals("4")){
                 getMc().getZlc().printOutZuglinie();
