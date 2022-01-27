@@ -2,6 +2,7 @@
 package controller;
 import model.*;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.Locale;
 import java.util.Scanner;
 import java.text.DateFormat;
@@ -37,16 +38,16 @@ public class BuchungController {
         }
     }
 
-    public void createBuchung(){
+    public void createBuchung() throws ParseException{
         o.printData("Buchung erstellen");
         o.printData("Buchungsnummer: ");
         String buchungsnummer_string = getScanner().nextLine();
         int buchungsnummer = Integer.valueOf(buchungsnummer_string);
-        o.printData("Abfahrt: ");
+        o.printData("Zuglinie: ");
         int i1=0;
         for(Zuglinie zuglinie : getMc().getZlc().getZuglinie()){
             if(zuglinie!=null){
-                o.printData(i1 + " - " + zuglinie.getZugliniennummer() + ": " + zuglinie.getBahnhof().get(0) + "-" + zuglinie.getBahnhof().get(zuglinie.getBahnhof().size()-1));
+                o.printData(i1 + " - " + zuglinie.getZugliniennummer() + ": " + zuglinie.getBahnhof().get(0).getName() + "-" + zuglinie.getBahnhof().get(zuglinie.getBahnhof().size()-1).getName());
                 i1++;
             }
         }
@@ -61,6 +62,44 @@ public class BuchungController {
                 i2++;
             }
         }
+        String passagierchoice_string = getScanner().nextLine();
+        int passagierchoice = Integer.valueOf(passagierchoice_string);
+        Passagier buchungpassagier = getMc().getPc().getPassagiere().get(passagierchoice);
+        o.printData("Preis: ");
+        String buchungpreis_string = getScanner().nextLine();
+        double buchungspreis = Double.valueOf(buchungpreis_string);
+        o.printData("Buchungsdatum: ");
+        String buchungsdatum_string = getScanner().nextLine();
+        Date buchungsdatum = format.parse(buchungsdatum_string);
+        Buchung newbuchung = new Buchung(buchungsnummer, buchungzuglinie, buchungpassagier, buchungspreis, buchungsdatum);
+        buchung.add(newbuchung);
+        o.printData("Buchung erstellt!");
+
+        /*
+        for(Passagier passagier : getMc().getPc().getPassagiere()){
+            if(passagier!=null){
+                o.printData(i2 + " - " + passagier.getVorname() + " " + passagier.getNachname());
+                i2++;
+            }
+        }
+        String passagierchoice_string = getScanner().nextLine();
+        int passagierchoice = Integer.valueOf(passagierchoice_string);
+        ArrayList<Passagier> passagiereal = new ArrayList<Passagier>();
+        passagiereal.add(getMc().getPc().getPassagiere().get(i2));
+        while(passagierchoice_string!="abbruch"){
+            int i = 0;
+            for(Passagier passagier : getMc().getPc().getPassagiere()){
+                if(passagier!=null){
+                    o.printData(i2 + " - " + passagier.getVorname() + " " + passagier.getNachname());
+                }
+                i2++;
+            }
+            String passagierchoice_string_al = getScanner().nextLine();
+            int passagierindex_al = Integer.valueOf(passagierchoice_string_al);
+            passagiereal.add(getMc().getPc().getPassagiere().get(i2));
+        }
+        */
+
         //Weitere Daten kommen noch!
 
         /*

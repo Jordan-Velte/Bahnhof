@@ -79,8 +79,8 @@ public class BahnhofsController {
         String bahnhofstandort = getScanner().nextLine();
         o.printData("Gleise: ");
         int i = 0;
+        o.printData("Anzahl an Gleise (transitiv): ");
         for(Gleis gleis : getMc().getGc().getGleise()){
-            o.printData("Anzahl an Gleise (transitiv): ");
             if(gleis!=null){
                 o.printData(i + " - " + gleis.getName());
                 i++;
@@ -92,6 +92,7 @@ public class BahnhofsController {
             gleis1.add(getMc().getGc().getGleise().get(0));
             Bahnhof newbahnhof1 = new Bahnhof(bahnhofname, bahnhofstandort, gleis1);
             bahnhoefe.add(newbahnhof1);
+            o.printData("Bahnhof wurde erstellt!");
         }
         else if(gleis_choice.equals("1")){
             ArrayList<Gleis> gleis12 = new ArrayList<Gleis>();
@@ -99,6 +100,7 @@ public class BahnhofsController {
             gleis12.add(getMc().getGc().getGleise().get(1));
             Bahnhof newbahnhof2 = new Bahnhof(bahnhofname, bahnhofstandort, gleis12);
             bahnhoefe.add(newbahnhof2);
+            o.printData("Bahnhof wurde erstellt!");
         }
         else if(gleis_choice.equals("2")){
             ArrayList<Gleis> gleis123 = new ArrayList<Gleis>();
@@ -107,6 +109,7 @@ public class BahnhofsController {
             gleis123.add(getMc().getGc().getGleise().get(2));
             Bahnhof newbahnhof3 = new Bahnhof(bahnhofname, bahnhofstandort, gleis123);
             bahnhoefe.add(newbahnhof3);
+            o.printData("Bahnhof wurde erstellt!");
         }
         else if(gleis_choice.equals("3")){
             ArrayList<Gleis> gleis1234 = new ArrayList<Gleis>();
@@ -116,6 +119,7 @@ public class BahnhofsController {
             gleis1234.add(getMc().getGc().getGleise().get(3));
             Bahnhof newbahnhof4 = new Bahnhof(bahnhofname, bahnhofstandort, gleis1234);
             bahnhoefe.add(newbahnhof4);
+            o.printData("Bahnhof wurde erstellt!");
         }
         
     }
@@ -134,11 +138,9 @@ public class BahnhofsController {
     public void setGc(GleisController gc) {
         this.gc = gc;
     }
-
     public MainController getMc() {
         return mc;
     }
-
     public void setMc(MainController mc) {
         this.mc = mc;
     }

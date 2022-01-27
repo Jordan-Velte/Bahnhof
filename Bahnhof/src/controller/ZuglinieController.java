@@ -3,6 +3,8 @@ package controller;
 import model.*;
 import java.util.ArrayList;
 import java.util.Locale;
+import java.util.Scanner;
+import java.util.Date;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.text.ParseException;
@@ -13,11 +15,13 @@ public class ZuglinieController {
     Output o = new Output();
     ArrayList<Zuglinie> zuglinie;
     DateFormat format = new SimpleDateFormat("dd.MM.yyyy", Locale.GERMAN);
+    Scanner scanner;
 
     public ZuglinieController(MainController mc){
         setMc(mc);
         setZuglinie(zuglinie);
-        zuglinie = new ArrayList<Zuglinie>();;
+        zuglinie = new ArrayList<Zuglinie>();
+        this.setScanner(new Scanner(System.in));
     }
 
 
@@ -47,6 +51,125 @@ public class ZuglinieController {
         bahnhofkombination2.add(getMc().getBc().getBahnhoefe().get(3));
         Zuglinie z2 = new Zuglinie(1, getMc().getZc().getHochgeschwindigkeitszug().get(1), getMc().getPc().getLokfuehrer().get(1), personalkombination1, bahnhofkombination2, format.parse("13.02.2022"));
         zuglinie.add(z2);
+    }
+
+    //createZuglinie
+    public void createZuglinie() throws ParseException{
+        o.printData("Zugline erstellen");
+        o.printData("Zugliniennummer: ");
+        String zugliniennummer_string = getScanner().nextLine();
+        int zugliniennummer = Integer.valueOf(zugliniennummer_string);
+        o.printData("Zug: ");
+        int i1 = 0;
+        for(Zug zug : getMc().getZc().getZug()){
+            o.printData(i1 + " - " + zug.getModell() + " " + zug.getBetreiber());
+            i1++;
+        }
+        String zugchoice = getScanner().nextLine();
+        int zugindex = Integer.valueOf(zugchoice);
+        Zug zugliniezug = getMc().getZc().getZug().get(zugindex);
+        o.printData("Lokführer: ");
+        int i2 = 0;
+        for(Lokfuehrer lokfuehrer : getMc().getPc().getLokfuehrer()){
+            o.printData(i2 + " - " + lokfuehrer.getVorname() + " " + lokfuehrer.getNachname());
+            i2++;
+        }
+        String lokfuehrerchoice = getScanner().nextLine();
+        int lokfuehrerindex = Integer.valueOf(lokfuehrerchoice);
+        Lokfuehrer zuglinielokfuehrer = getMc().getPc().getLokfuehrer().get(lokfuehrerindex);
+
+        o.printData("Personal (wenn fertig: abbruch): ");
+        int i3=0;
+        for(Personal personal : getMc().getPc().getPersonal()){
+            if(personal!=null){
+                o.printData(i3 + " - " + personal.getVorname() + " " + personal.getNachname());
+                i3++;
+            }
+        }
+        String personalchoice_string = getScanner().nextLine();
+        int personalchoice = Integer.valueOf(personalchoice_string);
+        ArrayList<Personal> personalal = new ArrayList<Personal>();
+        personalal.add(getMc().getPc().getPersonal().get(personalchoice));
+        while(personalchoice_string!="abbruch"){
+            int i4 = 0;
+            for(Personal personal : getMc().getPc().getPersonal()){
+                if(personal!=null){
+                    o.printData(i4 + " - " + personal.getVorname() + " " + personal.getNachname());
+                }
+                i4++;
+            }
+            String personalchoice_string_al = getScanner().nextLine();
+            int personalindex_al = Integer.valueOf(personalchoice_string_al);
+            personalal.add(getMc().getPc().getPersonal().get(personalindex_al));
+        }
+        if(personalchoice_string == "abbruch"){
+            o.printData("Bahnhöfe (wenn fertig: abbruch): ");
+            int i5=0;
+            for(Bahnhof bahnhof : getMc().getBc().getBahnhoefe()){
+                if(bahnhof!=null){
+                    o.printData(i5 + " - " + bahnhof.getName() + " " + bahnhof.getStandort());
+                    i5++;
+                }
+            }
+            String bahnhofchoice_string = getScanner().nextLine();
+            int bahnhofchoice = Integer.valueOf(bahnhofchoice_string);
+            ArrayList<Bahnhof> bahnhofal = new ArrayList<Bahnhof>();
+            bahnhofal.add(getMc().getBc().getBahnhoefe().get(bahnhofchoice));
+            while(bahnhofchoice_string!="abbruch"){
+                int i6 = 0;
+                for(Bahnhof bahnhof : getMc().getBc().getBahnhoefe()){
+                    if(bahnhof!=null){
+                        o.printData(i6+ " - " + bahnhof.getName() + " " + bahnhof.getStandort());
+                    }
+                    i6++;
+                }
+                String bahnhofchoice_string_al = getScanner().nextLine();
+                int bahnhofindex_al = Integer.valueOf(bahnhofchoice_string_al);
+                bahnhofal.add(getMc().getBc().getBahnhoefe().get(bahnhofindex_al));
+            }
+            if(bahnhofchoice_string=="abbruch"){
+                o.printData("Fahrtdatum: ");
+                String zugliniefahrtdatum_string = getScanner().nextLine();
+                Date zugliniefahrtdatum = format.parse(zugliniefahrtdatum_string);
+                Zuglinie newzuglinie = new Zuglinie(zugliniennummer, zugliniezug, zuglinielokfuehrer, personalal, bahnhofal, zugliniefahrtdatum);
+                zuglinie.add(newzuglinie);
+                o.printData("Zugline wurde erstellt!");
+            }
+            }
+
+            o.printData("Bahnhöfe (wenn fertig: abbruch): ");
+            int i5=0;
+            for(Bahnhof bahnhof : getMc().getBc().getBahnhoefe()){
+                if(bahnhof!=null){
+                    o.printData(i5 + " - " + bahnhof.getName() + " " + bahnhof.getStandort());
+                    i5++;
+                }
+            }
+            String bahnhofchoice_string = getScanner().nextLine();
+            int bahnhofchoice = Integer.valueOf(bahnhofchoice_string);
+            ArrayList<Bahnhof> bahnhofal = new ArrayList<Bahnhof>();
+            bahnhofal.add(getMc().getBc().getBahnhoefe().get(bahnhofchoice));
+            while(bahnhofchoice_string!="abbruch"){
+                int i6 = 0;
+                for(Bahnhof bahnhof : getMc().getBc().getBahnhoefe()){
+                    if(bahnhof!=null){
+                        o.printData(i6+ " - " + bahnhof.getName() + " " + bahnhof.getStandort());
+                    }
+                    i6++;
+                }
+                String bahnhofchoice_string_al = getScanner().nextLine();
+                int bahnhofindex_al = Integer.valueOf(bahnhofchoice_string_al);
+                bahnhofal.add(getMc().getBc().getBahnhoefe().get(bahnhofindex_al));
+            }
+            if(bahnhofchoice_string=="abbruch"){
+                o.printData("Fahrtdatum: ");
+                String zugliniefahrtdatum_string = getScanner().nextLine();
+                Date zugliniefahrtdatum = format.parse(zugliniefahrtdatum_string);
+                Zuglinie newzuglinie = new Zuglinie(zugliniennummer, zugliniezug, zuglinielokfuehrer, personalal, bahnhofal, zugliniefahrtdatum);
+                zuglinie.add(newzuglinie);
+                o.printData("Zugline wurde erstellt!");
+            }  
+
     }
 
     //PrintoutZuglinien
@@ -135,6 +258,19 @@ public class ZuglinieController {
     public ArrayList<Zuglinie> getZuglinie() {
         return zuglinie;
     }
+    public void setO(Output o) {
+        this.o = o;
+    }
+    public Output getO() {
+        return o;
+    }
+    public void setScanner(Scanner scanner) {
+        this.scanner = scanner;
+    }
+    public Scanner getScanner() {
+        return scanner;
+    }
+
 
     
 }

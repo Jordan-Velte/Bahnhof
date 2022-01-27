@@ -2,9 +2,6 @@
 package view;
 import java.text.ParseException;
 import java.util.Scanner;
-
-import javax.print.PrintException;
-
 import controller.*;
 public class Menu {
     Scanner scanner;
@@ -75,10 +72,10 @@ public class Menu {
                 
             }
             else if(eingabechoice.equals("4")){
-                //Züge
+                getMc().getZlc().createZuglinie();
             } 
             else if(eingabechoice.equals("5")){
-                //Buchungen
+                getMc().getBuc().createBuchung();
             }
         }
         else if(initchoice.equals("2")){
