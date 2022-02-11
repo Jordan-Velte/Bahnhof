@@ -45,7 +45,7 @@ public class Menu {
             }
             else if(eingabechoice.equals("2")){
                 //Dateneingabe: Zug-Subklassen
-                o.printData("Wählen Sie die Instanzen, die Sie ausgeben möchten:");
+                o.printData("Wählen Sie die Instanzen, die Sie eingeben möchten:");
                 o.printData("(1) Reinelektrische Züge");
                 o.printData("(2) Hochgeschwindigkeitszüge");
                 o.printData("(3) Standardpersonenzüge");
@@ -66,7 +66,7 @@ public class Menu {
             }
             else if(eingabechoice.equals("3")){
                 //Dateneingabe: Person-Subklassen
-                o.printData("Wählen Sie die Instanzen, die Sie ausgeben möchten:");
+                o.printData("Wählen Sie die Instanzen, die Sie eingeben möchten:");
                 o.printData("(1) Lokführer");
                 o.printData("(2) Personal");
                 o.printData("(3) Passagiere");
@@ -124,6 +124,8 @@ public class Menu {
                     case "3" : getMc().getZc().printOutStandardPersonenZuege();
                     break;
                     case "4" : getMc().getZc().printOutTransportZuege();
+                    break;
+                    case "5" : getMc().getZc().printOutZuege();
                     break;
                 }
             }
